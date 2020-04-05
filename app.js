@@ -8,7 +8,7 @@ const mongoose = require('mongoose');
 const indexRouter = require('./routes/index');
 // const tasksRouter = require('./routes/tasks');
 
-mongoose.connect('mongodb://localhost/james', {
+mongoose.connect('mongodb://james:secret@mongo-db:27017', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });

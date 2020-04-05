@@ -1,0 +1,35 @@
+version: "3"
+
+services:
+    nodejs:
+        build: .
+        image: task-manager
+        container_name: task-manager-container
+        restart: unless-stopped
+        volumes:
+            - node_modules:/home/node/app/node_modules
+        networks:
+            - backend-network
+        ports:
+            - "8080:3000"
+
+    mongo-db:
+        image: mongo:bionic
+        container_name: mongodb-taskmanager
+        volumes:
+            - mongo-data:/app/data
+        networks:
+            - backend-network
+        restart: unless-stopped
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: james
+            MONGO_INITDB_ROOT_PASSWORD: secret
+
+networks:
+    backend-network:
+        driver: bridge
+
+volumes:
+    mongo-data: {}
+    node_modules: {}
+    

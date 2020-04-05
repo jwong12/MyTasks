@@ -1,3 +1,5 @@
+Docker images are to be run on Linux.
+
 ```
 npm i nodemon
 ```
