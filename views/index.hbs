@@ -1,0 +1,50 @@
+<h1>{{title}}</h1>
+
+<ul class="nav nav-tabs">
+    <li class="active"><a href="/">Add Task</a></li>
+    <li><a href="/tasks">Tasks</a></li>
+</ul><br>
+
+<form method="post" id="submitForm">
+    <label for="title">Title:</label>
+    <input type="text" name="title" id="title"><br>
+
+    <label for="description">Description:</label>
+    <input type="text" name="description" id="description"><br>
+
+    <label for="datefrom">From date:</label>
+    <input type="text" name="datefrom" id="datefrom"><br>
+
+    <label for="dateto">To date:</label>
+    <input type="text" name="dateto" id="dateto"><br>
+
+    <label for="priority">Priority:</label>
+    <select name="priority" id="priority">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select><br>
+
+    <label for="category">Category:</label>
+    <input type="text" name="category" id="category"><br>
+
+    <div>
+        <input type="radio" id="active" name="status" value="Active" checked="checked">
+        <label for="active">Active</label>
+
+        <input type="radio" id="in-progress" name="status" value="In Progress">
+        <label for="in-progress">In Progress</label>
+
+        <input type="radio" id="inactive" name="status" value="Inactive">
+        <label for="inactive">Inactive</label>
+    </div>
+
+    <button type="submit">Submit</button>
+</form><br>
+<div id="statusMsg">
+
+<script src="/javascripts/datepicker.min.js"></script>
+<script src="/javascripts/bundle.js"></script>
+<script src="/javascripts/index.js"></script>
