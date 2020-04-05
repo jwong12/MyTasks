@@ -6,42 +6,59 @@
 </ul><br>
 
 <form method="post" id="submitForm">
-    <label for="title">Title:</label>
-    <input type="text" name="title" id="title"><br>
-
-    <label for="description">Description:</label>
-    <input type="text" name="description" id="description"><br>
-
-    <label for="datefrom">From date:</label>
-    <input type="text" name="datefrom" id="datefrom"><br>
-
-    <label for="dateto">To date:</label>
-    <input type="text" name="dateto" id="dateto"><br>
-
-    <label for="priority">Priority:</label>
-    <select name="priority" id="priority">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select><br>
-
-    <label for="category">Category:</label>
-    <input type="text" name="category" id="category"><br>
-
-    <div>
-        <input type="radio" id="active" name="status" value="Active" checked="checked">
-        <label for="active">Active</label>
-
-        <input type="radio" id="in-progress" name="status" value="In Progress">
-        <label for="in-progress">In Progress</label>
-
-        <input type="radio" id="finished" name="status" value="Finished">
-        <label for="finished">Finished</label>
+    <div class="form-group">
+        <label for="title" class="col-sm-2 control-label">Title:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="title" id="title">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="description" class="col-sm-2 control-label">Description:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="description" id="description">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="datefrom" class="col-sm-2 control-label">Start Date:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" autocomplete="off" name="datefrom" id="datefrom">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="dateto" class="col-sm-2 control-label">End Date:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" autocomplete="off" name="dateto" id="dateto">
+        </div>
+    </div>
+    <label for="priority" class="col-sm-2 control-label">Priority:</label>
+    <div class="col-sm-10">
+        <select name="priority" class="form-control" id="priority">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="category" class="col-sm-2 control-label">Category:</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" name="category" id="category">
+        </div>
     </div>
 
-    <button type="submit">Submit</button>
+    <label for="status" class="col-sm-2 control-label">Status:</label>
+    <div id="radio-buttons">
+        <input type="radio" id="active" name="status" value="Active" checked="checked">
+        <label for="active">Active</label>
+        <input type="radio" id="in-progress" name="status" value="In Progress">
+        <label for="in-progress">In Progress</label>
+        <input type="radio" id="finished" name="status" value="Finished">
+        <label for="finished">Finished</label>
+    </div><br>
+    <div id="btn-wrapper">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
 </form><br>
 <div id="statusMsg">
 

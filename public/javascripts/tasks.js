@@ -3,8 +3,8 @@ $(function ready() {
         console.log(data);
         data.forEach(function (item) {
             $('#tasks').append(
-                '<tr><td class="td-title">' + item.title + 
-                '</td><td class="td-description">' + item.description + 
+                '<tr><td>' + item.title + 
+                '</td><td>' + item.description + 
                 '</td><td class="td-datefrom">' + item.datefrom + 
                 '</td><td class="td-dateto">' + item.dateto + 
                 '</td><td>' + item.priority + 

@@ -7,13 +7,38 @@ a {
   color: #00B7FF;
 }
 
-.td-title {
-  min-width: 100px;
+.col-sm-2{
+  font-size: 16px;
+  padding: 8px;
+  margin: 0;
 }
 
-.td-description {
-  min-width: 150px;
-  max-width: 200px;
+.form-control {
+  width: 400px;
+}
+
+.col-sm-10 {
+  margin-bottom: 10px;
+}
+
+#radio-buttons {
+  display: inline-flex;  
+  width: 300px;
+  justify-content: space-between;
+  vertical-align: middle;
+  margin: 10px;
+  padding: 0 15px;
+}
+
+#radio-buttons input {
+  margin-top: 2px;
+}
+
+#btn-wrapper {
+  display: inline-grid;
+  justify-content: end;
+  width: 600px;
+
 }
 
 .td-datefrom{
@@ -26,4 +51,8 @@ a {
 
 .td-status {
   min-width: 85px;
+}
+
+.col-md-6 {
+  width: auto;
 }

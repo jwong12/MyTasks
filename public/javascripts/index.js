@@ -26,7 +26,6 @@ $(function ready() {
                 $('#statusMsg').html('Task was added!');
             },
             error: function (json) {
-                console.log('error func');
                 $('#statusMsg').removeClass();
                 $('#statusMsg').addClass('alert alert-danger');
                 $('#statusMsg').html(json.responseJSON.msg);

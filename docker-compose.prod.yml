@@ -11,7 +11,9 @@ services:
             - backend-network
         ports:
             - "8080:3000"
-
+        environment:
+            PRODUCTION: 'true'
+            
     mongo-db:
         image: mongo:bionic
         container_name: mongodb-taskmanager-prod
