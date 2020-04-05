@@ -5,14 +5,13 @@ Docker images are to be run in Linux.
 Port number is 8080.
 
 ```
-npm i nodemon
-```
-
-```
 npm install -g browserify
 ```
 
 ## To run docker-compose.yml:
+```
+docker-compose build
+```
 ```
 docker-compose up
 ```

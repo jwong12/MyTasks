@@ -22,8 +22,8 @@ services:
             - backend-network
         restart: unless-stopped
         environment:
-            MONGO_INITDB_ROOT_USERNAME: james
-            MONGO_INITDB_ROOT_PASSWORD: secret
+            MONGO_INITDB_ROOT_USERNAME: jameswong
+            MONGO_INITDB_ROOT_PASSWORD: A01025959
 
 networks:
     backend-network:

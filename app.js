@@ -4,11 +4,9 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
-
 const indexRouter = require('./routes/index');
 
-// 'mongodb://james:secret@mongo-db:27017'
-mongoose.connect('mongodb://localhost/james', {
+mongoose.connect('mongodb://jameswong:A01025959@mongo-db:27017', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });

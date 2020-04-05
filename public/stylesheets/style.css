@@ -1,6 +1,8 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  display: grid;
+  justify-content: center;
 }
 
 a {
@@ -11,14 +13,25 @@ a {
   font-size: 16px;
   padding: 8px;
   margin: 0;
+  width: 150px;
+}
+
+.form-group {
+  width: 450px;
 }
 
 .form-control {
-  width: 400px;
+  width: 300px;
 }
 
 .col-sm-10 {
+  display: contents;
+  width: 200px;
   margin-bottom: 10px;
+}
+
+#priority {
+  margin-bottom: 15px;
 }
 
 #radio-buttons {
@@ -26,7 +39,7 @@ a {
   width: 300px;
   justify-content: space-between;
   vertical-align: middle;
-  margin: 10px;
+  margin: 9px;
   padding: 0 15px;
 }
 
@@ -37,16 +50,17 @@ a {
 #btn-wrapper {
   display: inline-grid;
   justify-content: end;
-  width: 600px;
-
+  width: 450px;
 }
 
 .td-datefrom{
   min-width: 125px;
+  max-width: 135px;
 }
 
 .td-dateto{
   min-width: 125px;
+  max-width: 135px;
 }
 
 .td-status {
@@ -54,5 +68,35 @@ a {
 }
 
 .col-md-6 {
-  width: auto;
+  min-width: 900px;
+}
+
+@media only screen and (min-width: 993px) {
+  .col-md-6 {
+    min-width: 900px;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .col-md-6 {
+    min-width: 740px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  #status {
+    display: block;
+  }
+
+  #btn-wrapper {
+    width: 300px;
+  }
+
+  #statusMsg {
+    width: 385px;
+  }
+
+  .col-md-6 {
+    min-width: 500px;
+  }
 }
