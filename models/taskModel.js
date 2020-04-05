@@ -1,11 +1,14 @@
-module.exports = class Task {
-    constructor(body) {
-        this.title = body.title;
-        this.description = body.description;
-        this.datefrom = body.datefrom;
-        this.dateto = body.dateto;
-        this.priority = body.priority;
-        this.category = body.category;
-        this.status = body.status;
-    }
-}
+const mongoose = require('mongoose');
+
+const taskSchema = new mongoose.Schema({
+    title: String,
+    description: String,
+    datefrom: String,
+    dateto: String,
+    priority: String,
+    category: String,
+    status: String,
+    createOn: {type: Date, default: Date.now}
+});
+
+module.exports = mongoose.model('Task', taskSchema);

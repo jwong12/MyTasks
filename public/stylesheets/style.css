@@ -6,3 +6,23 @@ body {
 a {
   color: #00B7FF;
 }
+
+.td-title {
+  min-width: 100px;
+}
+
+.td-description {
+  max-width: 150px;
+}
+
+.td-datefrom{
+  min-width: 125px;
+}
+
+.td-dateto{
+  min-width: 125px;
+}
+
+.td-status {
+  min-width: 85px;
+}
