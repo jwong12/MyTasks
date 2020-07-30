@@ -15,9 +15,7 @@ router.post('/api/tasks', (req, res) => {
 	if(!req.body.title) {
     return res.status(400).json({msg : "Title can't be empty."});
 
-  } else if(!req.body.description) {
-    return res.status(400).json({msg : "Description can't be empty."});
-	};
+  };
 
 	const task = new Task(req.body);
 

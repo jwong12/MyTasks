@@ -6,7 +6,7 @@ const logger = require('morgan');
 const mongoose = require('mongoose');
 const indexRouter = require('./routes/index');
 
-mongoose.connect('mongodb://jameswong:A01025959@mongo-db:27017', {
+mongoose.connect('mongodb://jameswong:A112XZ8@mongo-db:27017', {
   useNewUrlParser: true,
   useUnifiedTopology: true
 });

@@ -9,6 +9,10 @@ a {
   color: #00B7FF;
 }
 
+#submitForm {
+  margin-top: 5px;
+}
+
 .col-sm-2{
   font-size: 16px;
   padding: 8px;
@@ -68,13 +72,8 @@ a {
 }
 
 .col-md-6 {
-  min-width: 900px;
-}
-
-@media only screen and (min-width: 993px) {
-  .col-md-6 {
-    min-width: 900px;
-  }
+  margin-top: 5px;
+  min-width: 970px;
 }
 
 @media only screen and (max-width: 992px) {
@@ -97,6 +96,6 @@ a {
   }
 
   .col-md-6 {
-    min-width: 500px;
+    min-width: 632px;
   }
 }
