@@ -77,13 +77,14 @@ a {
 }
 
 .td-btn {
-  max-width: 54px;
+  width: 65px;
   padding: 3px;
   font-size: 12px
 }
 
 .deleteBtn {
   width: 100%;
+  min-width: 55px;
   padding: 2px 3px 1px;
 }
 

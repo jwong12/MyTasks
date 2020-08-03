@@ -13,7 +13,7 @@ $(function ready() {
         });
 
         $.ajax({
-            url: '/api/tasks/',
+            url: '/api/tasks',
             type: 'POST',
             contentType: 'application/json',
             dataType: 'json',
