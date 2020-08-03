@@ -2,7 +2,7 @@
 
 Docker images are to be run in Linux.
 
-Port number is 8080.
+Port number is 80.
 
 ```
 npm install -g browserify
