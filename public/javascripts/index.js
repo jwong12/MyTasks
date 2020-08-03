@@ -12,10 +12,8 @@ $(function ready() {
             status: $('input[name="status"]:checked').val()
         });
 
-        console.log(taskInfo);
-
         $.ajax({
-            url: '/api/tasks',
+            url: '/api/tasks/',
             type: 'POST',
             contentType: 'application/json',
             dataType: 'json',

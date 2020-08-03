@@ -35,7 +35,15 @@ router.get('/api/tasks', (req, res) => {
     }
     
     res.json(tasks);
-	})
+	});
+});
+
+router.delete('/api/tasks/:id', function (req, res) {
+  Task.findByIdAndRemove({ _id: req.body.id }, (err) => {
+    if(err) {
+      return res.status(500).json({status: "Error deleting task"});
+    }
+  });
 });
 
 module.exports = router;

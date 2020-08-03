@@ -8,7 +8,8 @@ const indexRouter = require('./routes/index');
 
 mongoose.connect('mongodb://jameswong:A112XZ8@mongo-db:27017', {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useFindAndModify: false
 });
 
 const db = mongoose.connection;

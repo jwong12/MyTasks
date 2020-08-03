@@ -76,6 +76,17 @@ a {
   min-width: 970px;
 }
 
+.td-btn {
+  max-width: 54px;
+  padding: 3px;
+  font-size: 12px
+}
+
+.deleteBtn {
+  width: 100%;
+  padding: 2px 3px 1px;
+}
+
 @media only screen and (max-width: 992px) {
   .col-md-6 {
     min-width: 740px;
