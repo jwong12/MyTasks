@@ -1,4 +1,4 @@
-FROM node:lts-stretch-slim
+FROM node:latest
 
 WORKDIR /home/node/app
 
