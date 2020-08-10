@@ -6,14 +6,6 @@ function deleteTask(id) {
     const taskId = JSON.stringify({
         id
     });
-    
-    $.ajax({
-        url: '/api/tasks/:' + id,
-        type: 'DELETE',
-        contentType: 'application/json',
-        dataType: 'json',
-        data: taskId
-    });
 
     const tableRows = $('#tasks tr');
 
@@ -21,6 +13,14 @@ function deleteTask(id) {
         tableRows[i].remove();
     }
 
+    $.ajax({
+        url: '/api/tasks/:' + id,
+        type: 'DELETE',
+        contentType: 'application/json',
+        dataType: 'json',
+        data: taskId
+    })
+        
     loadTasks();
 }
 
