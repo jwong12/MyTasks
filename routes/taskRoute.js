@@ -13,8 +13,12 @@ function apiAuthenticationMiddleware(req, res, next) {
 
 router.get('/', apiAuthenticationMiddleware, (req, res) => {
 	Tasks.find({ username: req.user.username }, (err, result) => {    
-		console.log(result); //
-		res.json(result[0].tasks);
+		if(result.length > 0) {
+			res.json(result[0].tasks);
+
+		} else {
+			res.json(null);
+		}
 	});
 });
 
@@ -25,15 +29,8 @@ router.post('/', apiAuthenticationMiddleware, (req, res) => {
 
 	const task = req.body;
 	const query = Tasks.where({ username: req.user.username });
-	console.log('task: '); 	//
-	console.log(task); 		//
-	console.log('query: '); //
-	console.log(query); 	//
 	
 	query.findOne((err, result) => {
-		console.log('result: '); 	//
-		console.log(result); 		//
-
 		if (err) return handleError(err);
 	
 		if (result) {
@@ -55,21 +52,23 @@ router.post('/', apiAuthenticationMiddleware, (req, res) => {
 	});
 });
 
-// router.get('/api/tasks', (req, res) => {
-//   	Task.find({}, (err, tasks) => {
-// 		if(err) {
-// 			return res.status(500).json({status: "Error retrieveing tasks"});
-//     	}
-    
-//     	res.json(tasks);
-// 	});
-// });
-
 router.delete('/:id', function (req, res) {
-	Task.findByIdAndRemove({ _id: req.body.id }, (err) => {
-		if(err) {
-			return res.status(500).json({status: "Error deleting task"});
-		}
+	const query = Tasks.where({ username: req.user.username });
+	
+	query.findOne((err, result) => {
+		if (err) return handleError(err);
+	
+		if (result) {
+			result.tasks.pull(req.body.id);
+	
+			result.save((err) => {
+				if (err) {
+					console.log('Failed to remove a task in Mongodb', err);
+					res.status(500).json({ status: 'Failed to remove a task' });
+					return;
+				}			
+			});
+		}		
 	});
 });
 
