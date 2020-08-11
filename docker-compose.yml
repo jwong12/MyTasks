@@ -5,7 +5,7 @@ services:
         build: .
         image: task-manager
         container_name: task-manager-container
-        restart: unless-stopped
+        restart: always
         volumes:
             - node_modules:/home/node/app/node_modules
         networks:
@@ -20,7 +20,7 @@ services:
             - mongo-data:/app/data
         networks:
             - backend-network
-        restart: unless-stopped
+        restart: always
         environment:
             MONGO_INITDB_ROOT_USERNAME: jameswong
             MONGO_INITDB_ROOT_PASSWORD: A112XZ8

@@ -19,25 +19,27 @@ function deleteTask(id) {
         contentType: 'application/json',
         dataType: 'json',
         data: taskId
-    });
-
+    })
+        
     loadTasks();
 }
 
 function loadTasks() {
     $.getJSON("/api/tasks", function (data) {
-        data.forEach(function (item) {
-            $('#tasks').append(
-                '<tr><td>' + item.title + 
-                '</td><td>' + item.description + 
-                '</td><td class="td-datefrom">' + item.datefrom + 
-                '</td><td class="td-dateto">' + item.dateto + 
-                '</td><td>' + item.priority + 
-                '</td><td>' + item.category + 
-                '</td><td class="td-status">' + item.status + 
-                '</td><td class="td-btn"><button class="deleteBtn" onClick="deleteTask(\'' + item._id + '\')">Remove</button>' + 
-                '</td></tr>'
-            );
-        });
+        if(data) {
+            data.forEach(function (item) {
+                $('#tasks').append(
+                    '<tr><td>' + item.title + 
+                    '</td><td>' + item.description + 
+                    '</td><td class="td-datefrom">' + item.datefrom + 
+                    '</td><td class="td-dateto">' + item.dateto + 
+                    '</td><td>' + item.priority + 
+                    '</td><td>' + item.category + 
+                    '</td><td class="td-status">' + item.status + 
+                    '</td><td class="td-btn"><button class="deleteBtn" onClick="deleteTask(\'' + item._id + '\')">Remove</button>' + 
+                    '</td></tr>'
+                );
+            });
+        }
     });
 }

@@ -4,33 +4,58 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
-const indexRouter = require('./routes/index');
 
+const taskRouter = require('./routes/taskRoute');
+const websiteRouter = require('./routes/websiteRoute');
+
+const app = express();
+
+// Authentication Set up
+const session = require('cookie-session');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
+const flash = require('connect-flash');
+
+app.use(session({keys: ['OneHundredAnd1', 'OneHundredAnd2', 'OneHundredAnd3']}));
+app.use(flash());
+
+// Configure passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Configure passport-local to use account model for authentication
+const Account = require('./models/Account');
+passport.use(new LocalStrategy(Account.authenticate()));
+
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
+
+//End of Authentication Set up
+
+//Connect to Mongodb using mogoose
 mongoose.connect('mongodb://jameswong:A112XZ8@mongo-db:27017', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false
+	useNewUrlParser: true,
+	useUnifiedTopology: true,
+	useFindAndModify: false
 });
 
 const db = mongoose.connection;
 
 db.on('error', () => {
-  console.log('Failed to connect to mongodb. Exiting...');
-  process.exit(1);
+	console.log('Failed to connect to mongodb. Exiting...');
+	process.exit(1);
 });
 
 db.once('open', function() {
-  console.log('Opened mongoDB connection')
+	console.log('Opened mongoDB connection')
 });
 
 process.on('SIGINT', () => {
-  console.log("Stopping the process....");
-  mongoose.connection.close((err) => {
-      console.log("Shutting down.....");
-  });
+	console.log("Stopping the process....");
+	mongoose.connection.close((err) => {
+		console.log("Shutting down.....");
+	});
 });
-
-const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -42,22 +67,23 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
+app.use('/api/tasks', taskRouter);
+app.use('/', websiteRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+	next(createError(404));
 });
 
 // error handler
 app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+	// set locals, only providing error in development
+	res.locals.message = err.message;
+	res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+	// render the error page
+	res.status(err.status || 500);
+	res.render('error');
 });
 
 module.exports = app;

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const taskSchema = new mongoose.Schema({
+const task = new mongoose.Schema({
     title: String,
     description: String,
     datefrom: String,
@@ -11,4 +11,9 @@ const taskSchema = new mongoose.Schema({
     createOn: {type: Date, default: Date.now}
 });
 
-module.exports = mongoose.model('Task', taskSchema);
+const tasks = new mongoose.Schema({
+    username: String,
+    tasks: [task]
+})
+
+module.exports = mongoose.model('Tasks', tasks);
