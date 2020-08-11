@@ -1,14 +1,18 @@
-<h3>Register to get access</h3>
-<form action="/register" method="post">
-    <div>
-        <label>Username:</label>
-        <input type="text" name="username"/>
-    </div>
-    <div>
-        <label>Password:</label>
-        <input type="password" name="password"/>
-    </div>
-    <div>
-        <input type="submit" value="Register"/>
-    </div>
-</form>
+<div class="auth-wrapper">
+    <h3>Task Manager</h3>
+    <h4>Create an account</h4>
+    <form action="/register" method="post">
+        <div class="auth-labels">
+            <label>Username</label><br/>
+            <input type="text" name="username"/>
+        </div>
+        <div class="auth-labels">
+            <label>Password</label><br/>
+            <input type="password" name="password"/>
+        </div>
+        <div class="auth-btn">
+            <input type="submit" value="Register"/>
+        </div>
+    </form>
+    <a href="/login">Already have an account</a>
+</div>
