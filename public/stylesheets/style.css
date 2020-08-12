@@ -5,21 +5,23 @@ body {
 	justify-content: center;
 }
 
+/* login/register pages */
 a {
-	color: #00B7FF;
+	color: #0583e0;
 }
 
 .auth-wrapper {
 	padding: 30px 0;
 }
 
-h3 {
-	margin: 25px 0;
+h2 {
+	margin: 30px 0;
 }
 
 h4 {
 	font-size: 16px;
 	font-weight: 600;
+	margin: 15px 0;
 }
 
 .auth-labels {
@@ -39,17 +41,24 @@ h4 {
     border-left: none;
     border-right: none;
     border-bottom: solid #bfbfbf 1px;
-    padding: 5px 10px;
+	padding: 5px 10px;
+	width: 200px;
 }
 
 .auth-btn {
-	padding: 15px 0 25px;
+	padding: 0 0 30px;
 }
 
 .auth-btn input {
 	padding: 3px 10px;
 }
 
+.errorMsg {
+	color: #e60e0e;
+    padding: 10px 0 20px;
+}
+
+/* add task page */
 #submitForm {
 	margin-top: 5px;
 }
@@ -98,6 +107,11 @@ h4 {
 	width: 450px;
 }
 
+.alert {
+	padding: 10px 15px;
+}
+
+/* tasks page */
 .td-datefrom{
 	min-width: 125px;
 	max-width: 135px;

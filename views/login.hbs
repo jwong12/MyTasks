@@ -1,5 +1,5 @@
 <div class="auth-wrapper">
-    <h3>Task Manager</h3>
+    <h2>Task Manager</h2>
     <h4>Sign into your account</h4>
     <form action="/login" method="post">
         <div class="auth-labels">
@@ -10,6 +10,7 @@
             <label>Password</label><br/>
             <input type="password" name="password"/>
         </div>
+        <div class="errorMsg">{{status}}</div>
         <div class="auth-btn">
             <input type="submit" value="Sign In"/>
         </div>

@@ -24,7 +24,7 @@ router.get('/', apiAuthenticationMiddleware, (req, res) => {
 
 router.post('/', apiAuthenticationMiddleware, (req, res) => {
 	if(!req.body.title) {
-		return res.status(400).json({msg : "Title can't be empty."});
+		return res.status(400).json({msg : "Title cannot be empty."});
 	};
 
 	const task = req.body;
