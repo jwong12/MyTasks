@@ -1,16 +1,22 @@
-<h3>Login</h3>
-<form action="/login" method="post">
-    <div>
-        <label>Username:</label>
-        <input type="text" name="username"/>
-    </div>
-    <div>
-        <label>Password:</label>
-        <input type="password" name="password"/>
-    </div>
-    <div>
-        <input type="submit" value="Log In"/>
-    </div>
-</form>
-<p>To set up an account</p>
-<a href="/register">Register</a>
+<div class="auth-wrapper">
+    <h2>Task Manager</h2>
+    <h4>Sign into your account</h4>
+    <form action="/login" method="post">
+        <div class="labels-wrapper">
+            <div class="auth-labels">
+                <label>Username</label><br/>
+                <input type="text" name="username"/>
+            </div>
+            <div class="auth-labels">
+                <label>Password</label><br/>
+                <input type="password" name="password"/>
+            </div>
+        </div>
+        <div class="successMsg">{{success}}</div>
+        <div class="errorMsg">{{errorStatus}}</div>
+        <div class="auth-btn">
+            <input type="submit" value="Sign In"/>
+        </div>
+    </form>
+    <a href="/register">Create an account</a>
+</div>

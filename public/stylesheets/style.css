@@ -1,113 +1,204 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  display: grid;
-  justify-content: center;
+	background-color: #e9f5ff;
+	padding: 50px;
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	display: grid;
+	justify-content: center;
 }
 
+/* login/register pages */
 a {
-  color: #00B7FF;
+	color: #0583e0;
+}
+
+.auth-wrapper {
+	padding: 30px 0;
+}
+
+h2 {
+	margin: 30px 0;
+}
+
+h4 {
+	font-size: 16px;
+	font-weight: 600;
+	margin: 15px 0;
+}
+
+.labels-wrapper {
+	padding-bottom: 10px;
+}
+
+.auth-labels {
+	padding: 10px 0;
+}
+
+.auth-labels label {
+	margin-bottom: 6px;
+}
+
+.auth-labels input {
+	background-color: transparent;
+    color: #636363;
+    outline: none;
+    outline-style: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #bfbfbf 1px;
+	padding: 5px 10px;
+	width: 234px;
+}
+
+.auth-btn {
+	padding: 20px 0 30px;
+}
+
+.auth-btn input {
+	padding: 3px 10px;
+}
+
+.successMsg {
+	color: green;
+	line-height: 32px;
+}
+
+.errorMsg {
+	color: #e60e0e;
+	line-height: 32px;
+}
+
+/* add task page */
+.nav-content {
+	float: right;
+}
+
+.non-active:hover {
+	color: #2b4fa5 !important;
+	background-color: #d0d0d0 !important;
 }
 
 #submitForm {
-  margin-top: 5px;
+	margin-top: 5px;
 }
 
 .col-sm-2{
-  font-size: 16px;
-  padding: 8px;
-  margin: 0;
-  width: 150px;
+	font-size: 16px;
+	padding: 8px;
+	margin: 0;
+	width: 150px;
 }
 
 .form-group {
-  width: 450px;
+	width: 450px;
 }
 
 .form-control {
-  width: 300px;
+	width: 300px;
+	background-color: #fcfeff;
 }
 
 .col-sm-10 {
-  display: contents;
-  width: 200px;
-  margin-bottom: 10px;
+	display: contents;
+	width: 200px;
+	margin-bottom: 10px;
 }
 
 #priority {
-  margin-bottom: 15px;
+	margin-bottom: 15px;
 }
 
 #radio-buttons {
-  display: inline-flex;  
-  width: 300px;
-  justify-content: space-between;
-  vertical-align: middle;
-  margin: 9px;
-  padding: 0 15px;
+	display: inline-flex;  
+	width: 300px;
+	justify-content: space-between;
+	vertical-align: middle;
+	margin: 9px;
+	padding: 0 15px;
 }
 
 #radio-buttons input {
-  margin-top: 2px;
+	margin-top: 2px;
 }
 
 #btn-wrapper {
-  display: inline-grid;
-  justify-content: end;
-  width: 450px;
+	display: inline-grid;
+	justify-content: end;
+	width: 450px;
+}
+
+.alert {
+	padding: 10px 15px;
+}
+
+/* tasks page */
+.container {
+	width: 970px;
+	padding: 0;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+	color: #3a3a3a;
+	background-color: #e9f5ff;
+}
+
+#tasks tr td {
+	background-color: #fcfeff;
+	color: #505050;
 }
 
 .td-datefrom{
-  min-width: 125px;
-  max-width: 135px;
+	min-width: 125px;
+	max-width: 135px;
 }
 
 .td-dateto{
-  min-width: 125px;
-  max-width: 135px;
+	min-width: 125px;
+	max-width: 135px;
 }
 
 .td-status {
-  min-width: 85px;
+	min-width: 85px;
 }
 
 .col-md-6 {
-  margin-top: 5px;
-  min-width: 970px;
+	margin-top: 5px;
+	padding: 0;
+	min-width: 970px;
 }
 
 .td-btn {
-  width: 65px;
-  padding: 3px;
-  font-size: 12px
+	width: 65px;
+	padding: 3px;
+	font-size: 12px
 }
 
 .deleteBtn {
-  width: 100%;
-  min-width: 55px;
-  padding: 2px 3px 1px;
+	width: 100%;
+	min-width: 55px;
+	padding: 2px 3px 1px;
 }
 
 @media only screen and (max-width: 992px) {
-  .col-md-6 {
-    min-width: 740px;
-  }
+	.container {
+		width: 740px;
+	}
+
+	.col-md-6 {
+		min-width: 740px;
+	}
 }
 
 @media only screen and (max-width: 767px) {
-  #status {
-    display: block;
-  }
+	#status {
+		display: block;
+	}
 
-  #btn-wrapper {
-    width: 300px;
-  }
+	#btn-wrapper {
+		width: 300px;
+	}
 
-  #statusMsg {
-    width: 385px;
-  }
-
-  .col-md-6 {
-    min-width: 632px;
-  }
+	#statusMsg {
+		width: 385px;
+	}
 }

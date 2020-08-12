@@ -1,12 +1,12 @@
-<ul class="nav">
-    <li class="nav-item active"><a class="nav-link" href="/logout">Logout</a></li>
-</ul>
+<div class="nav-wrapper">
+    <div class="nav-content">Hi {{username}}, <a class="nav-link" href="/logout">Sign out</a></div>
+</div>
 
 <h1>Task Manager</h1>
 
 <ul class="nav nav-tabs">
     <li class="active"><a href="/">Add Task</a></li>
-    <li><a href="/tasks">Tasks</a></li>
+    <li><a href="/tasks" class="non-active">Tasks</a></li>
 </ul><br>
 
 <form method="post" id="submitForm">

@@ -16,15 +16,15 @@ router.get('/register', function(req, res) {
 
 router.post('/register', function(req, res, next) {
     console.log('registering user');
+
     Account.register(new Account({username: req.body.username}), req.body.password, function(err) {
         if (err) {
             console.log('error while registering user!', err);
-            return next(err);
+            return res.render('register', { errorStatus : '** ' + err.message + '.' });
         }
 
         console.log('user registered!');
-
-        res.redirect('/');
+        res.render('login', { success : '** The account was created.' });
     });
 });
 
@@ -32,8 +32,21 @@ router.get('/login', function(req, res) {
     res.render('login', {});
 });
 
-router.post('/login', passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }), function(req, res) {
-    res.redirect('/');
+router.post('/login', function(req, res, next) {
+    passport.authenticate('local', { failureRedirect: '/login', failureFlash: true }, function(err, user, info) {
+        if (err) { console.log(err) }
+
+        if (!user) {
+            console.log(info.message);
+            return res.render('login', { errorStatus : '** ' + info.message + '.' });
+        }
+
+        req.logIn(user, function(err) {
+            if (err) { return next(err); }
+            req.session.user = req.user;
+            res.redirect('/');
+        });
+    })(req, res, next);
 });
 
 router.get('/logout', function(req, res) {
@@ -44,12 +57,12 @@ router.get('/logout', function(req, res) {
 //The following routes render the task pages. But require authentication, hence the authenticationMiddleware
 router.get('/', authenticationMiddleware, function(req, res) {
     console.log('In / User : ', req.user.username);
-    res.render('index', {});
+    res.render('index', { username: req.user.username });
 });
   
 router.get('/tasks', authenticationMiddleware, function(req, res) {
-    console.log('In /courses User : ', req.user.username);
-    res.render('tasks', {});
+    console.log('In /tasks User : ', req.user.username);
+    res.render('tasks', { username: req.user.username });
 });
 
 module.exports = router;

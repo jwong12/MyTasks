@@ -21,7 +21,7 @@ $(function ready() {
             success: function () {
                 $('#statusMsg').removeClass();
                 $('#statusMsg').addClass('alert alert-success');
-                $('#statusMsg').html('Task was added!');
+                $('#statusMsg').html('The task was added.');
             },
             error: function (json) {
                 $('#statusMsg').removeClass();
