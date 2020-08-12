@@ -1,26 +1,28 @@
+
+<div class="nav-wrapper">
+    <div class="nav-content">Hi {{username}}, <a class="nav-link" href="/logout">Sign out</a></div>
+</div>
 <div class="container">
-<ul class="nav">
-    <li class="nav-item active"><a class="nav-link" href="/logout">Logout</a></li>
-</ul>
-<h1>Task Manager</h1>
+    <h1>Task Manager</h1>
 
-<ul class="nav nav-tabs">
-    <li><a href="/">Add Task</a></li>
-    <li class="active"><a href="/tasks">Tasks</a></li>
-</ul><br/>
+    <ul class="nav nav-tabs">
+        <li><a href="/">Add Task</a></li>
+        <li class="active"><a href="/tasks">Tasks</a></li>
+    </ul><br/>
 
-<div class="row">
-<div class="col-md-6">
-    <table class="table table-striped table-bordered table-hover table-condensed" id="tasks">
-        <tr>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Start Date</th>
-            <th>End Date</th>
-            <th>Priority</th>
-            <th>Category</th>
-            <th>Status</th>
-        </tr>
-    </table>
+    <div class="row"></div>
+    <div class="col-md-6">
+        <table class="table table-striped table-bordered table-hover table-condensed" id="tasks">
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Priority</th>
+                <th>Category</th>
+                <th>Status</th>
+            </tr>
+        </table>
+    </div>
 </div>
 <script src="javascripts/tasks.js"></script>

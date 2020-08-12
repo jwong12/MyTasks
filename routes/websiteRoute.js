@@ -20,11 +20,11 @@ router.post('/register', function(req, res, next) {
     Account.register(new Account({username: req.body.username}), req.body.password, function(err) {
         if (err) {
             console.log('error while registering user!', err);
-            return res.render('register', { status : '** ' + err.message + '.' });
+            return res.render('register', { errorStatus : '** ' + err.message + '.' });
         }
 
         console.log('user registered!');
-        res.redirect('/');
+        res.render('login', { success : '** The account was created.' });
     });
 });
 
@@ -38,7 +38,7 @@ router.post('/login', function(req, res, next) {
 
         if (!user) {
             console.log(info.message);
-            return res.render('login', { status : '** ' + info.message + '.' });
+            return res.render('login', { errorStatus : '** ' + info.message + '.' });
         }
 
         req.logIn(user, function(err) {
@@ -57,12 +57,12 @@ router.get('/logout', function(req, res) {
 //The following routes render the task pages. But require authentication, hence the authenticationMiddleware
 router.get('/', authenticationMiddleware, function(req, res) {
     console.log('In / User : ', req.user.username);
-    res.render('index', {});
+    res.render('index', { username: req.user.username });
 });
   
 router.get('/tasks', authenticationMiddleware, function(req, res) {
-    console.log('In /courses User : ', req.user.username);
-    res.render('tasks', {});
+    console.log('In /tasks User : ', req.user.username);
+    res.render('tasks', { username: req.user.username });
 });
 
 module.exports = router;

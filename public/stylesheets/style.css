@@ -24,8 +24,12 @@ h4 {
 	margin: 15px 0;
 }
 
+.labels-wrapper {
+	padding-bottom: 10px;
+}
+
 .auth-labels {
-	padding: 12px 0;
+	padding: 10px 0;
 }
 
 .auth-labels label {
@@ -42,23 +46,32 @@ h4 {
     border-right: none;
     border-bottom: solid #bfbfbf 1px;
 	padding: 5px 10px;
-	width: 200px;
+	width: 234px;
 }
 
 .auth-btn {
-	padding: 0 0 30px;
+	padding: 20px 0 30px;
 }
 
 .auth-btn input {
 	padding: 3px 10px;
 }
 
+.successMsg {
+	color: green;
+	line-height: 32px;
+}
+
 .errorMsg {
 	color: #e60e0e;
-    padding: 10px 0 20px;
+	line-height: 32px;
 }
 
 /* add task page */
+.nav-content {
+	float: right;
+}
+
 #submitForm {
 	margin-top: 5px;
 }
@@ -112,6 +125,11 @@ h4 {
 }
 
 /* tasks page */
+.container {
+	width: 970px;
+	padding: 0;
+}
+
 .td-datefrom{
 	min-width: 125px;
 	max-width: 135px;
@@ -128,6 +146,7 @@ h4 {
 
 .col-md-6 {
 	margin-top: 5px;
+	padding: 0;
 	min-width: 970px;
 }
 
@@ -144,6 +163,10 @@ h4 {
 }
 
 @media only screen and (max-width: 992px) {
+	.container {
+		width: 740px;
+	}
+
 	.col-md-6 {
 		min-width: 740px;
 	}
@@ -160,9 +183,5 @@ h4 {
 
 	#statusMsg {
 		width: 385px;
-	}
-
-	.col-md-6 {
-		min-width: 632px;
 	}
 }
