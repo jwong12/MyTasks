@@ -1,4 +1,5 @@
 body {
+	background-color: #e9f5ff;
 	padding: 50px;
 	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 	display: grid;
@@ -72,6 +73,11 @@ h4 {
 	float: right;
 }
 
+.non-active:hover {
+	color: #2b4fa5 !important;
+	background-color: #d0d0d0 !important;
+}
+
 #submitForm {
 	margin-top: 5px;
 }
@@ -89,6 +95,7 @@ h4 {
 
 .form-control {
 	width: 300px;
+	background-color: #fcfeff;
 }
 
 .col-sm-10 {
@@ -128,6 +135,16 @@ h4 {
 .container {
 	width: 970px;
 	padding: 0;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+	color: #3a3a3a;
+	background-color: #e9f5ff;
+}
+
+#tasks tr td {
+	background-color: #fcfeff;
+	color: #505050;
 }
 
 .td-datefrom{
