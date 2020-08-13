@@ -1,5 +1,5 @@
 body {
-	background-color: #e9f5ff;
+	background-color: #cfe9ff;
 	padding: 50px;
 	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 	display: grid;
@@ -82,6 +82,7 @@ h4 {
 .non-active:hover {
 	color: #2b4fa5 !important;
 	background-color: #d0d0d0 !important;
+	border: solid 1px #acacac !important;
 }
 
 #submitForm {
@@ -149,7 +150,7 @@ h4 {
 
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
 	color: #3a3a3a;
-	background-color: #e9f5ff;
+	background-color: #cfe9ff;
 	border-top-color: #cacaca;
     border-left-color: #cacaca;
     border-right-color: #cacaca;
