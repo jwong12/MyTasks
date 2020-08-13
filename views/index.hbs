@@ -1,5 +1,5 @@
 <div class="nav-wrapper">
-    <div class="nav-content">Hi {{username}}, <a class="nav-link" href="/logout">Sign out</a></div>
+    <div class="nav-content"><span>Hello {{username}},</span><a class="nav-link" href="/logout">Sign out</a></div>
 </div>
 
 <h1>Task Manager</h1>
@@ -47,7 +47,7 @@
     <div class="form-group">
         <label for="category" class="col-sm-2 control-label">Category:</label>
         <div class="col-sm-10">
-            <input type="text" class="form-control" name="category" id="category">
+            <input type="text" class="form-control" name="category" id="category" value="Work">
         </div>
     </div>
 
@@ -57,8 +57,8 @@
         <label for="active">Active</label>
         <input type="radio" id="in-progress" name="status" value="In Progress">
         <label for="in-progress">In Progress</label>
-        <input type="radio" id="finished" name="status" value="Finished">
-        <label for="finished">Finished</label>
+        <input type="radio" id="urgent" name="status" value="Urgent">
+        <label for="urgent">Urgent</label>
     </div><br><br>
     <div id="btn-wrapper">
         <button type="submit" class="btn btn-primary">Add Task</button>

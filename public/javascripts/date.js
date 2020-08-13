@@ -7,6 +7,7 @@ const start = datepicker('#datefrom', {
         // Show which date was selected.
         console.log(instance.dateSelected);
     },
+    dateSelected: new Date(),
 });
 
 const end = datepicker('#dateto', { 

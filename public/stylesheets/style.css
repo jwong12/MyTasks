@@ -59,18 +59,24 @@ h4 {
 }
 
 .successMsg {
-	color: green;
+	color: #128212;
 	line-height: 32px;
 }
 
 .errorMsg {
-	color: #e60e0e;
+	color: #de0c0c;
 	line-height: 32px;
 }
 
 /* add task page */
 .nav-content {
 	float: right;
+    justify-content: space-between;
+    display: flex;
+    width: 208px;
+    padding: 10px 15px;
+    border: solid 1px #cacaca;
+    border-radius: 4px;
 }
 
 .non-active:hover {
@@ -137,14 +143,26 @@ h4 {
 	padding: 0;
 }
 
+.nav-tabs {
+	border-color: #cacaca;
+}
+
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
 	color: #3a3a3a;
 	background-color: #e9f5ff;
+	border-top-color: #cacaca;
+    border-left-color: #cacaca;
+    border-right-color: #cacaca;
+}
+
+#tasks tr th {
+	border-color: #cacaca;
 }
 
 #tasks tr td {
 	background-color: #fcfeff;
 	color: #505050;
+	border-color: #cacaca;
 }
 
 .td-datefrom{
@@ -177,6 +195,14 @@ h4 {
 	width: 100%;
 	min-width: 55px;
 	padding: 2px 3px 1px;
+}
+
+.alert-success {
+	border-color: #85bf86;
+}
+
+.alert-danger {
+	border-color: #d48887;
 }
 
 @media only screen and (max-width: 992px) {
