@@ -7,8 +7,8 @@ $(function ready() {
             description: $('#description').val(),
             datefrom: $('#datefrom').val(),
             dateto: $('#dateto').val(),
-            priority: $('#priority').val(),
             category: $('#category').val(),
+            priority: $('#priorityOutputId').val(),
             status: $('input[name="status"]:checked').val()
         });
 
