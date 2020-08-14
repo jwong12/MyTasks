@@ -5,9 +5,9 @@ const task = new mongoose.Schema({
     description: String,
     datefrom: String,
     dateto: String,
-    priority: String,
     category: String,
     status: String,
+    priority: String,
     createOn: {type: Date, default: Date.now}
 });
 
