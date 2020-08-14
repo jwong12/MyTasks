@@ -1,15 +1,12 @@
-
 <div class="nav-wrapper">
     <div class="nav-content"><span>Hello {{username}},</span><a class="nav-link" href="/logout">Sign out</a></div>
 </div>
 <div class="container">
     <h1>Task Manager</h1>
-
     <ul class="nav nav-tabs">
         <li><a href="/" class="non-active">Add Task</a></li>
         <li class="active"><a href="/tasks">Tasks</a></li>
     </ul><br/>
-
     <div class="row"></div>
     <div class="col-md-6">
         <table class="table table-striped table-bordered table-hover table-condensed" id="tasks">
@@ -21,8 +18,12 @@
                 <th>Priority</th>
                 <th>Category</th>
                 <th>Status</th>
+                <th id="remove-th">Remove</th>
             </tr>
         </table>
+        <div id="loader-wrapper">
+            <div id="loader"></div>
+        </div>
     </div>
 </div>
 <script src="javascripts/tasks.js"></script>

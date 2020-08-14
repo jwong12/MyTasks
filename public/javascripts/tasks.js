@@ -25,8 +25,12 @@ function deleteTask(id) {
 }
 
 function loadTasks() {
+    $("#loader").show();
+    
     $.getJSON("/api/tasks", function (data) {
         if(data) {
+            $("#loader").hide();
+            
             data.forEach(function (item) {
                 $('#tasks').append(
                     '<tr><td>' + item.title + 

@@ -1,5 +1,6 @@
 const passport = require('passport');
 const Account = require('../models/Account');
+const Tasks = require('../models/Tasks');
 const router = require('express').Router();
 
 function authenticationMiddleware(req, res, next) {
@@ -24,6 +25,67 @@ router.post('/register', function(req, res, next) {
         }
 
         console.log('user registered!');
+        
+        const demoTaskOne = {
+            title: "Implement Counting sort algo",
+            description: "Demo task 1",
+            datefrom: "Tue Aug 18 2020",
+            dateto: "Tue Aug 18 2020",
+            category: "Personal Project",
+            status: "Urgent",
+            priority: "1",
+        };
+
+        const demoTaskTwo = {
+            title: "Finish Task Manager project",
+            description: "Demo task 2",
+            datefrom: "Mon Jul 20 2020",
+            dateto: "Fri Aug 14 2020",
+            category: "Personal Project",
+            status: "In Progress",
+            priority: "2",
+        };
+
+        const demoTaskThree = {
+            title: "Apply for dev jobs",
+            description: "Demo task 3",
+            datefrom: "Mon Aug 17 2020",
+            dateto: "Fri Sep 04 2020",
+            category: "Work",
+            status: "In Progress",
+            priority: "1",
+        };
+
+        const demoTaskFour = {
+            title: "Grocery shopping",
+            description: "Demo task 4",
+            datefrom: "Sat Aug 29 2020",
+            dateto: "",
+            category: "Chore",
+            status: "Active",
+            priority: "3",
+        };
+
+        const demoTaskFive = {
+            title: "Hiking day @ Grouse 11am",
+            description: "Demo task 5",
+            datefrom: "Sun Aug 30 2020",
+            dateto: "",
+            category: "Personal",
+            status: "Active",
+            priority: "2",
+        };
+
+        const newTasks = new Tasks({ username: req.body.username, tasks: [demoTaskOne, demoTaskTwo, demoTaskThree, demoTaskFour, demoTaskFive] });
+
+        newTasks.save((err) => {
+			if (err) {
+				console.log('Failed to save the Tasks in Mongodb', err);
+				res.status(500).json({ status: 'Failed to save the Tasks' });
+				return;
+			}
+		});
+
         res.render('login', { success : '** The account was created.' });
     });
 });
