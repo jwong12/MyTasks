@@ -1,4 +1,3 @@
-
 <div class="nav-wrapper">
     <div class="nav-content"><span>Hello {{username}},</span><a class="nav-link" href="/logout">Sign out</a></div>
 </div>
@@ -19,8 +18,12 @@
                 <th>Priority</th>
                 <th>Category</th>
                 <th>Status</th>
+                <th id="remove-th">Remove</th>
             </tr>
         </table>
+        <div id="loader-wrapper">
+            <div id="loader"></div>
+        </div>
     </div>
 </div>
 <script src="javascripts/tasks.js"></script>

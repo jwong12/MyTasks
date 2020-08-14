@@ -28,8 +28,6 @@ router.post('/', apiAuthenticationMiddleware, (req, res) => {
 	};
 
 	const task = req.body;
-	console.log("task: "); //
-	console.log(task); //
 	const query = Tasks.where({ username: req.user.username });
 	
 	query.findOne((err, result) => {

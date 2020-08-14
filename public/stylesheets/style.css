@@ -266,6 +266,10 @@ input[type=range]::-ms-thumb {
 	font-size: 12px
 }
 
+#remove-th {
+	width: 66px;
+}
+
 .deleteBtn {
 	width: 100%;
 	min-width: 55px;
@@ -306,4 +310,34 @@ input[type=range]::-ms-thumb {
 	#statusMsg {
 		width: 385px;
 	}
+}
+
+
+/* loader */
+#loader-wrapper {
+	position: relative;
+	text-align: -webkit-center;
+    height: 150px;
+}
+
+#loader {
+	position: relative;
+    top: 100px;
+	border: 7px solid #fcfeff;
+	border-radius: 50%;
+	border-top: 7px solid #3498db;
+	width: 50px;
+	height: 50px;
+	-webkit-animation: spin 1s linear infinite;
+	animation: spin 1s linear infinite;
+}
+
+@-webkit-keyframes spin {
+	0% { -webkit-transform: rotate(0deg); }
+	100% { -webkit-transform: rotate(360deg); }
+}
+  
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
 }
