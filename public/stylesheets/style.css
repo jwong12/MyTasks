@@ -271,19 +271,17 @@ input[type=range]::-ms-thumb {
 }
 
 .td-btn {
-	width: 65px;
 	padding: 3px;
-	font-size: 12px
 }
 
 .th-remove {
-	width: 65px;
+	width: 74px;
 }
 
 .deleteBtn {
-	width: 100%;
-	min-width: 55px;
-	padding: 2px 3px 1px;
+	font-size: 12px;
+	padding: 4px 8px;
+	outline: none;
 }
 
 #statusMsg {

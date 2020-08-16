@@ -40,7 +40,7 @@ function loadTasks() {
                     '</td><td>' + item.priority + 
                     '</td><td>' + item.category + 
                     '</td><td class="td-status">' + item.status + 
-                    '</td><td class="td-btn"><button class="deleteBtn" onClick="deleteTask(\'' + item._id + '\')">Remove</button>' + 
+                    '</td><td class="td-btn"><button class="deleteBtn btn btn-primary" onClick="deleteTask(\'' + item._id + '\')">Remove</button>' + 
                     '</td></tr>'
                 );
             });
