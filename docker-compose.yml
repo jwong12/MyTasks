@@ -12,6 +12,7 @@ services:
             - backend-network
         ports:
             - "80:3000"
+            - "443:443"
 
     mongo-db:
         image: mongo:bionic
