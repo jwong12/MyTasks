@@ -5,11 +5,34 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
+const fs = require('fs');
+const http = require('http');
+const https = require('https');
 
 const taskRouter = require('./routes/taskRoute');
 const websiteRouter = require('./routes/websiteRoute');
 
+const hostname = 'mytasks.live';
+const httpPort = 80;
+const httpsPort = 443;
+
+// Https Set up
+const httpsOptions = {
+	cert: fs.readFileSync('./ssl/mytasks_live.crt'),
+	ca: fs.readFileSync('./ssl/mytasks_live.ca-bundle'),
+	key: fs.readFileSync('./ssl/mytasks_live.key')
+};
+
 const app = express();
+const httpServer = http.createServer(app);
+const httpsServer = https.createServer(httpsOptions, app);
+
+app.use((req, res, next) => {
+	if(req.protocol === 'http') {
+	  res.redirect(301, `https://${req.headers.host}${req.url}`);
+	}
+	next();
+ });
 
 // Authentication Set up
 const session = require('cookie-session');
@@ -71,6 +94,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/tasks', taskRouter);
 app.use('/', websiteRouter);
+
+httpServer.listen(httpPort, hostname);
+httpsServer.listen(httpsPort, hostname);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
