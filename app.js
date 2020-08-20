@@ -5,25 +5,25 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const mongoose = require('mongoose');
-const fs = require('fs');
-const https = require('https');
-const forceSSL = require('express-force-ssl');
+// const fs = require('fs');
+// const https = require('https');
+// const forceSSL = require('express-force-ssl');
 
 const taskRouter = require('./routes/taskRoute');
 const websiteRouter = require('./routes/websiteRoute');
 
-const hostname = '0.0.0.0';
-const httpsPort = 443;
+// const hostname = '0.0.0.0';
+// const httpsPort = 443;
 
 // Https Set up
-const httpsOptions = {
-	cert: fs.readFileSync('./ssl/mytasks_live.crt'),
-	ca: fs.readFileSync('./ssl/mytasks_live.ca-bundle'),
-	key: fs.readFileSync('./ssl/mytasks_live.key')
-};
+// const httpsOptions = {
+// 	cert: fs.readFileSync('./ssl/mytasks_live.crt'),
+// 	ca: fs.readFileSync('./ssl/mytasks_live.ca-bundle'),
+// 	key: fs.readFileSync('./ssl/mytasks_live.key')
+// };
 
 const app = express();
-const httpsServer = https.createServer(httpsOptions, app);
+// const httpsServer = https.createServer(httpsOptions, app);
 
 // Authentication Set up
 const session = require('cookie-session');
@@ -81,7 +81,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use('/.well-known', serveIndex('public/.well-known', {'icons': true}));
-app.use(forceSSL);
+// app.use(forceSSL);
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/tasks', taskRouter);
@@ -103,6 +103,6 @@ app.use(function(err, req, res, next) {
 	res.render('error');
 });
 
-httpsServer.listen(httpsPort, hostname);
+// httpsServer.listen(httpsPort, hostname);
 
 module.exports = app;

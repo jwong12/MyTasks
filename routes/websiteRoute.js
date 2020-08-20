@@ -30,7 +30,7 @@ router.post('/register', function(req, res, next) {
             title: "Implement Counting sort algo",
             description: "Demo task 1",
             datefrom: "Tue Aug 18 2020",
-            dateto: "Tue Aug 18 2020",
+            dateto: "Wed Aug 19 2020",
             category: "Personal Project",
             status: "Urgent",
             priority: "1",
@@ -49,7 +49,7 @@ router.post('/register', function(req, res, next) {
         const demoTaskThree = {
             title: "Apply for dev jobs",
             description: "Demo task 3",
-            datefrom: "Mon Aug 17 2020",
+            datefrom: "Wed Aug 19 2020",
             dateto: "Fri Sep 04 2020",
             category: "Work",
             status: "In Progress",
@@ -106,7 +106,7 @@ router.post('/login', function(req, res, next) {
         req.logIn(user, function(err) {
             if (err) { return next(err); }
             req.session.user = req.user;
-            res.redirect('/');
+            res.redirect('/tasks');
         });
     })(req, res, next);
 });
