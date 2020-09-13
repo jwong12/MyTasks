@@ -57,19 +57,20 @@ router.delete('/:id', function (req, res) {
 	
 	query.findOne((err, result) => {
 		if (err) return handleError(err);
-	
+
 		if (result) {
 			result.tasks.pull(req.body.id);
-	
 			result.save((err) => {
 				if (err) {
 					console.log('Failed to remove a task in Mongodb', err);
 					res.status(500).json({ status: 'Failed to remove a task' });
 					return;
 				}			
-			});
-		}		
+			})
+			
+		}				
 	});
+	
 });
 
 module.exports = router;

@@ -121,9 +121,9 @@ h4 {
 	display: table-caption;  
 	width: 300px;
 	justify-content: space-between;
-	vertical-align: middle;
-	margin: 9px 0;
-	padding: 0 15px;
+	vertical-align: bottom;	
+	margin: 10px 0;
+	padding-left: 5px;
 }
 
 #radio-buttons label {
@@ -131,7 +131,8 @@ h4 {
 	padding: 3px 3px 3px 2px;	
 	height: 22px;
     line-height: 10px;
-    vertical-align: middle;
+	vertical-align: middle;
+	font-weight: 500;
 }
 
 #radio-buttons input {
@@ -139,13 +140,13 @@ h4 {
 }
 
 #priority-wrapper {
-	display: flex;
+	display: block;
 	margin-top: 19px;
 	margin-bottom: 19px;
 }
 
 #priorityLabel {
-	margin-top: 9px;
+	padding: 0 8px;
 }
 
 #priorityOutputId {
@@ -154,10 +155,13 @@ h4 {
 	line-height: 0;
 	font-size: 20px;
 	padding-left: 15px;
+	vertical-align: sub;
 }
 
 input[type=range] {
-	width: 265px;
+	display: inline-block;
+	width: 55%;
+	vertical-align: middle;
 	-webkit-appearance: none;
 	height: 5px;
 	background: #dadada;
@@ -315,8 +319,85 @@ input[type=range]::-ms-thumb {
 }
 
 @media only screen and (max-width: 767px) {
-	#status {
+	body {
+		padding: 15px;
 		display: block;
+	}
+
+	.auth-wrapper {
+		margin: auto;
+    	width: fit-content;
+	}
+
+	#main-wrapper {
+		margin: auto;
+		padding: 25px 0;
+	}
+
+	.container {
+		width: 100%;
+		padding: 0;
+	}
+
+	.form-group {
+		width: 100%;
+	}
+
+	.control-label {
+		display: inline-block;
+		width: 30%;
+		max-width: 350px;
+		margin: 0 auto;
+	}
+
+	.form-control {
+		display: inline-block;
+		width: 65%;
+		max-width: 350px;
+		margin: 0 auto;
+	}	
+
+	#status {
+		display: inline-block;
+	}
+
+	#radio-buttons {
+		display: inline;
+		padding-left: 0;
+		font-size: 12px;
+	}
+
+	#btn-wrapper {
+		display: inline-block;
+		text-align: center;
+		width: 100%;
+	}
+
+	/* Tasks Page */
+	.container {
+		padding: 25px 0;
+	}
+
+	tr th, tr td {
+		padding: 4px 3px;
+	}
+
+	.th-title, .th-date, .th-priority, .th-category, .th-status, .th-remove {
+		width: 100%;
+	}
+	
+	.col-md-6 {
+		margin-top: 5px;
+		padding: 0;
+		min-width: 0;
+	}
+	
+	.td-btn {
+		padding: 3px;
+	}	
+	
+	#statusMsg {
+		margin-top: 20px;
 	}
 
 	#btn-wrapper {
@@ -325,6 +406,26 @@ input[type=range]::-ms-thumb {
 
 	#statusMsg {
 		width: 385px;
+	}
+}
+
+@media only screen and (max-width: 576px) {
+	h1 {
+		font-size: 32px;
+	}
+
+	.col-sm-2 {
+		font-size: 14px;
+	}
+
+	table {
+		font-size: 8px;
+	}
+
+	.deleteBtn {
+		font-size: 8px;
+		padding: 2px 3px;
+		outline: none;
 	}
 }
 

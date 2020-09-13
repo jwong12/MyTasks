@@ -7,25 +7,22 @@ function deleteTask(id) {
         id
     });
 
-    const tableRows = $('#tasks tr');
-
-    for(let i = 1; i < tableRows.length; i++) {
-        tableRows[i].remove();
-    }
-
     $.ajax({
         url: '/api/tasks/:' + id,
         type: 'DELETE',
         contentType: 'application/json',
         dataType: 'json',
-        data: taskId
+        data: taskId,
+        success: refreshPage()
     })
-        
-    loadTasks();
+}
+
+function refreshPage() {
+    location.reload(true);
 }
 
 function loadTasks() {
-    $("#loader").show();
+    $("#loader").show();    
     
     $.getJSON("/api/tasks", function (data) {
         if(data) {
