@@ -373,6 +373,10 @@ input[type=range]::-ms-thumb {
 		width: 100%;
 	}
 
+	#statusMsg {
+		margin-top: 20px;
+	}
+
 	/* Tasks Page */
 	.container {
 		padding: 25px 0;
@@ -395,18 +399,6 @@ input[type=range]::-ms-thumb {
 	.td-btn {
 		padding: 3px;
 	}	
-	
-	#statusMsg {
-		margin-top: 20px;
-	}
-
-	#btn-wrapper {
-		width: 300px;
-	}
-
-	#statusMsg {
-		width: 385px;
-	}
 }
 
 @media only screen and (max-width: 576px) {
