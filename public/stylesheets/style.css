@@ -1,5 +1,6 @@
 body {
 	background-color: #cfe9ff;
+	color: #4e4e4e;
 	padding: 50px;
 	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 	display: grid;
@@ -47,7 +48,7 @@ h4 {
     border-right: none;
     border-bottom: solid #bfbfbf 1px;
 	padding: 5px 10px;
-	width: 234px;
+	width: 220px;
 }
 
 .auth-btn {
@@ -55,7 +56,16 @@ h4 {
 }
 
 .auth-btn input {
-	padding: 3px 10px;
+    color: #f9f9f9;
+	background-color: #337ab7;
+	border: 1px solid #337ab7;
+    border-radius: 12px;
+    padding: 7px 17px;
+}
+
+.auth-btn input:hover {
+	background-color: #2e6da4;
+	border: 1px solid #2e6da4;
 }
 
 .successMsg {
@@ -74,15 +84,18 @@ h4 {
     justify-content: space-between;
     display: flex;
     width: 208px;
-    padding: 10px 15px;
-    border: solid 1px #acacac;
-    border-radius: 4px;
+	padding: 10px 15px;
+	background-color: #a5dbf5;
+	border-radius: 15px;
 }
 
-.non-active:hover {
-	color: #2b4fa5 !important;
-	background-color: #d0d0d0 !important;
-	border: solid 1px #acacac !important;
+.nav-link {
+	text-decoration: none !important;
+	color: #1b71b1;
+}
+
+.nav-link:hover {
+	color: #004e88;
 }
 
 #submitForm {
@@ -108,7 +121,20 @@ h4 {
 
 .form-control {
 	width: 300px;
-	background-color: #fcfeff;
+	background-color: #f9f9f9;
+}
+
+.text-input {
+	background-color: transparent;
+    color: #565656;
+    outline: none;
+    outline-style: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: solid #a5a5a5 1px;
+	padding: 5px 10px;
+	width: 300px;
 }
 
 .col-sm-10 {
@@ -164,7 +190,7 @@ input[type=range] {
 	vertical-align: middle;
 	-webkit-appearance: none;
 	height: 5px;
-	background: #dadada;
+	background: #efefef;
 	border-radius: 10px;
 	box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.4);
 	outline: none;
@@ -174,7 +200,7 @@ input[type=range]::-webkit-slider-thumb {
 	-webkit-appearance: none;
 	appearance: none;
 	width: 15px;
-	height: 30px;
+	height: 25px;
 	background: #337ab7;
 	border: solid 1px #2e6da4;
 	border-radius: 20px;
@@ -186,7 +212,7 @@ input[type=range]::-webkit-slider-thumb {
 input[type=range]::-moz-range-thumb {
 	appearance: none;
 	width: 15px;
-	height: 30px;
+	height: 25px;
 	background: #337ab7;
 	border: solid 1px #2e6da4;
 	border-radius: 20px;
@@ -198,7 +224,7 @@ input[type=range]::-moz-range-thumb {
 input[type=range]::-ms-thumb {
 	appearance: none;
 	width: 15px;
-	height: 30px;
+	height: 25px;
 	background: #337ab7;
 	border: solid 1px #2e6da4;
 	border-radius: 20px;
@@ -214,6 +240,8 @@ input[type=range]::-ms-thumb {
 
 #btn-wrapper button {
 	outline: none;
+	color: #f9f9f9;
+	border-radius: 12px;
 }
 
 .alert {
@@ -227,25 +255,39 @@ input[type=range]::-ms-thumb {
 }
 
 .nav-tabs {
-	border-color: #acacac;
+	border-color: #b8cce2;
+}
+
+.nav-tabs .active a {
+	font-weight: bold;
+	border-color: #b8cce2;
 }
 
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
-	color: #565656;
 	background-color: #cfe9ff;
-	border-top-color: #acacac;
-    border-left-color: #acacac;
-    border-right-color: #acacac;
+	border-top-color: #b8cce2;
+    border-left-color: #b8cce2;
+    border-right-color: #b8cce2;
+}
+
+.non-active:hover {
+	color: #4e4e4e !important;
+	background-color: #a6d9ff !important;
+	border: solid 1px #b8cce2 !important;
+	border-bottom-style: none !important;
+	font-weight: bold !important;
 }
 
 #tasks tr th {
-	border-color: #acacac;
+	border-color: #658bad;
+    background-color: #337ab7;
+    color: #f9f9f9;
 }
 
 #tasks tr td {
 	background-color: #fcfeff;
 	color: #505050;
-	border-color: #acacac;
+	border-color: #e8e8e8;
 }
 
 .th-title {
@@ -286,6 +328,9 @@ input[type=range]::-ms-thumb {
 	font-size: 12px;
 	padding: 4px 8px;
 	outline: none;
+	color: #f9f9f9;
+	border-color: #337ab7;
+	border-radius: 12px;
 }
 
 #statusMsg {
@@ -348,6 +393,7 @@ input[type=range]::-ms-thumb {
 		width: 30%;
 		max-width: 350px;
 		margin: 0 auto;
+		color: #565656 !important;
 	}
 
 	.form-control {
@@ -356,6 +402,11 @@ input[type=range]::-ms-thumb {
 		max-width: 350px;
 		margin: 0 auto;
 	}	
+
+	.text-input {
+		width: 65%;
+		max-width: 350px;
+	}
 
 	#status {
 		display: inline-block;
