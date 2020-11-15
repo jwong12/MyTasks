@@ -1,10 +1,7 @@
 body {
 	background-color: #cfe9ff;
 	color: #4e4e4e;
-	padding: 50px;
-	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-	display: grid;
-	justify-content: center;
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;	
 }
 
 /* login/register pages */
@@ -12,12 +9,34 @@ a {
 	color: #0583e0;
 }
 
-.auth-wrapper {
-	padding: 30px 0;
+.auth-wrapper{
+	position: relative;
+    height: 80vh;
+    display: block;
+}
+
+.authentication {
+	height: 50%;
+    width: 225px;
+    display: block;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+
+h1 {
+	font-weight: bold;
+	margin: 20px 0;
+    text-align: center;
 }
 
 h2 {
-	margin: 30px 0;
+	margin: 0 0 30px;
+	text-align: center;
+	font-weight: bold;
 }
 
 h4 {
@@ -52,6 +71,7 @@ h4 {
 }
 
 .auth-btn {
+	text-align: center;
 	padding: 20px 0 30px;
 }
 
@@ -79,6 +99,12 @@ h4 {
 }
 
 /* add task page */
+.content-wrapper {
+	padding: 30px;
+	display: grid;
+	justify-content: center;
+}
+
 .nav-content {
 	float: right;
     justify-content: space-between;
@@ -99,7 +125,7 @@ h4 {
 }
 
 #submitForm {
-	margin-top: 5px;
+	margin-top: 10px;
 }
 
 @-moz-document url-prefix() {
@@ -117,6 +143,7 @@ h4 {
 
 .form-group {
 	width: 450px;
+	margin-bottom: 20px;
 }
 
 .form-control {
@@ -167,8 +194,8 @@ h4 {
 
 #priority-wrapper {
 	display: block;
-	margin-top: 19px;
-	margin-bottom: 19px;
+	margin-top: 30px;
+	margin-bottom: 20px;
 }
 
 #priorityLabel {
@@ -290,7 +317,7 @@ input[type=range]::-ms-thumb {
 	border-color: #e8e8e8;
 }
 
-.th-title {
+.th-task {
 	width: 250px;
 }
 
@@ -354,7 +381,7 @@ input[type=range]::-ms-thumb {
 		min-width: 740px;
 	}
 
-	.th-title {
+	.th-task {
 		width: 105px;
 	}
 
@@ -364,19 +391,18 @@ input[type=range]::-ms-thumb {
 }
 
 @media only screen and (max-width: 767px) {
-	body {
-		padding: 15px;
+	.content-wrapper {
+		padding: 20px 10px;
 		display: block;
 	}
 
-	.auth-wrapper {
+	.authentication {
 		margin: auto;
     	width: fit-content;
 	}
 
 	#main-wrapper {
 		margin: auto;
-		padding: 25px 0;
 	}
 
 	.container {
@@ -437,7 +463,7 @@ input[type=range]::-ms-thumb {
 		padding: 4px 3px;
 	}
 
-	.th-title, .th-date, .th-priority, .th-category, .th-status, .th-remove {
+	.th-task, .th-priority, .th-category, .th-status, .th-remove {
 		width: 100%;
 	}
 	
@@ -455,6 +481,7 @@ input[type=range]::-ms-thumb {
 @media only screen and (max-width: 576px) {
 	h1 {
 		font-size: 32px;
+		margin: 40px 0 20px;
 	}
 
 	.col-sm-2 {
@@ -462,11 +489,11 @@ input[type=range]::-ms-thumb {
 	}
 
 	table {
-		font-size: 8px;
+		font-size: 11px;
 	}
 
 	.deleteBtn {
-		font-size: 8px;
+		font-size: 11px;
 		padding: 2px 3px;
 		outline: none;
 	}

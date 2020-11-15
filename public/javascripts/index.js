@@ -3,11 +3,9 @@ $(function ready() {
         event.preventDefault();
         
         const taskInfo = JSON.stringify({
-            title: $('#title').val(),
-            description: $('#description').val(),
-            datefrom: $('#datefrom').val(),
-            dateto: $('#dateto').val(),
+            title: $('#task').val(),
             category: $('#category').val(),
+            date: $('#date').val(),
             priority: $('#priorityOutputId').val(),
             status: $('input[name="status"]:checked').val()
         });

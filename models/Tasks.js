@@ -1,11 +1,9 @@
 const mongoose = require('mongoose');
 
 const task = new mongoose.Schema({
-    title: String,
-    description: String,
-    datefrom: String,
-    dateto: String,
+    task: String,
     category: String,
+    date: String,
     status: String,
     priority: String,
     createOn: {type: Date, default: Date.now}

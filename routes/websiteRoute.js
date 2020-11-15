@@ -27,51 +27,41 @@ router.post('/register', function(req, res, next) {
         console.log('user registered!');
         
         const demoTaskOne = {
-            title: "Implement Counting sort algo",
-            description: "Demo task 1",
-            datefrom: "Tue Aug 18 2020",
-            dateto: "Wed Aug 19 2020",
+            task: "Implement Counting sort algo (Demo #1)",
             category: "Personal Project",
+            date: "Tue Nov 17 2020",
             status: "Urgent",
             priority: "1",
         };
 
         const demoTaskTwo = {
-            title: "Finish Task Manager project",
-            description: "Demo task 2",
-            datefrom: "Mon Jul 20 2020",
-            dateto: "Fri Aug 14 2020",
+            task: "Finish Task Manager project (Demo #2)",
             category: "Personal Project",
+            date: "Mon Nov 23 2020",
             status: "In Progress",
             priority: "2",
         };
 
         const demoTaskThree = {
-            title: "Apply for dev jobs",
-            description: "Demo task 3",
-            datefrom: "Wed Aug 19 2020",
-            dateto: "Fri Sep 04 2020",
+            task: "Apply for dev jobs (Demo #3)",
             category: "Work",
+            date: "Wed Nov 18 2020",
             status: "In Progress",
             priority: "1",
         };
 
         const demoTaskFour = {
-            title: "Grocery shopping",
-            description: "Demo task 4",
-            datefrom: "Sat Aug 29 2020",
-            dateto: "",
+            task: "Grocery shopping (Demo #4)",
             category: "Chore",
+            date: "Sat Nov 28 2020",
             status: "Active",
             priority: "3",
         };
 
         const demoTaskFive = {
-            title: "Hiking day @ Grouse 11am",
-            description: "Demo task 5",
-            datefrom: "Sun Aug 30 2020",
-            dateto: "",
+            task: "Hiking day @ Grouse 11am (Demo #5)",
             category: "Personal",
+            date: "Sun Nov 29 2020",
             status: "Active",
             priority: "2",
         };

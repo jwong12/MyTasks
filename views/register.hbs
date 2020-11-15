@@ -1,21 +1,23 @@
 <div class="auth-wrapper">
-    <h2>MyTasks</h2>
-    <h4>Create an account</h4>
-    <form action="/register" method="post">
-        <div class="labels-wrapper">
-            <div class="auth-labels">
-                <label>Username</label><br/>
-                <input type="text" name="username"/>
+    <div class="authentication">
+        <h2>MyTasks</h2>
+        <h4>Create an account</h4>
+        <form action="/register" method="post">
+            <div class="labels-wrapper">
+                <div class="auth-labels">
+                    <label>Username</label><br/>
+                    <input type="text" name="username"/>
+                </div>
+                <div class="auth-labels">
+                    <label>Password</label><br/>
+                    <input type="password" name="password"/>
+                </div>
             </div>
-            <div class="auth-labels">
-                <label>Password</label><br/>
-                <input type="password" name="password"/>
+            <div class="errorMsg">{{errorStatus}}</div>
+            <div class="auth-btn">
+                <input type="submit" value="Create"/>
             </div>
-        </div>
-        <div class="errorMsg">{{errorStatus}}</div>
-        <div class="auth-btn">
-            <input type="submit" value="Create"/>
-        </div>
-    </form>
-    <a href="/login">Already have an account</a>
+        </form>
+        <a href="/login">Already have an account</a>
+    </div>
 </div>
