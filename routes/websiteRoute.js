@@ -30,8 +30,8 @@ router.post('/register', function(req, res, next) {
             task: "Implement Counting sort algo (Demo #1)",
             category: "Personal Project",
             date: "Tue Nov 17 2020",
-            status: "Urgent",
-            priority: "1",
+            status: "Finished",
+            priority: "high",
         };
 
         const demoTaskTwo = {
@@ -39,7 +39,7 @@ router.post('/register', function(req, res, next) {
             category: "Personal Project",
             date: "Mon Nov 23 2020",
             status: "In Progress",
-            priority: "2",
+            priority: "high",
         };
 
         const demoTaskThree = {
@@ -47,7 +47,7 @@ router.post('/register', function(req, res, next) {
             category: "Work",
             date: "Wed Nov 18 2020",
             status: "In Progress",
-            priority: "1",
+            priority: "medium",
         };
 
         const demoTaskFour = {
@@ -55,7 +55,7 @@ router.post('/register', function(req, res, next) {
             category: "Chore",
             date: "Sat Nov 28 2020",
             status: "Active",
-            priority: "3",
+            priority: "medium",
         };
 
         const demoTaskFive = {
@@ -63,7 +63,7 @@ router.post('/register', function(req, res, next) {
             category: "Personal",
             date: "Sun Nov 29 2020",
             status: "Active",
-            priority: "2",
+            priority: "low",
         };
 
         const newTasks = new Tasks({ username: req.body.username, tasks: [demoTaskOne, demoTaskTwo, demoTaskThree, demoTaskFour, demoTaskFive] });

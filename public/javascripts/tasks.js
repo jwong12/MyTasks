@@ -29,12 +29,23 @@ function loadTasks() {
             $("#loader").hide();
             
             data.forEach(function (item) {
+                let color;
+                if (item.priority === "low") {
+                    color = '#29a229';
+
+                } else if (item.priority === "high") {
+                    color = '#f53e3e';
+
+                } else {
+                    color = '#9e9e0d';
+                }
+
                 $('#tasks').append(
                     '<tr><td>' + item.task + 
                     '</td><td>' + item.category + 
                     '</td><td class="td-date">' + item.date + 
-                    '</td><td>' + item.priority + 
                     '</td><td class="td-status">' + item.status + 
+                    '</td><td style="color:' + color + '">' + item.priority + 
                     '</td><td class="td-btn"><button class="deleteBtn btn btn-primary" onClick="deleteTask(\'' + item._id + '\')">Remove</button>' + 
                     '</td></tr>'
                 );

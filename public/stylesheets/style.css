@@ -36,6 +36,7 @@ h1 {
 h2 {
 	margin: 0 0 30px;
 	text-align: center;
+	font-size: 32px;
 	font-weight: bold;
 }
 
@@ -124,8 +125,12 @@ h4 {
 	color: #004e88;
 }
 
+#main-wrapper {
+	padding: 10px 0;
+}
+
 #submitForm {
-	margin-top: 10px;
+	margin-top: 5px;
 }
 
 @-moz-document url-prefix() {
@@ -194,8 +199,7 @@ h4 {
 
 #priority-wrapper {
 	display: block;
-	margin-top: 30px;
-	margin-bottom: 20px;
+	margin: 20px 0;
 }
 
 #priorityLabel {
@@ -206,14 +210,14 @@ h4 {
 	display: inline-block;
 	width: 10px;
 	line-height: 0;
-	font-size: 20px;
+	font-size: 18px;
 	padding-left: 15px;
 	vertical-align: sub;
 }
 
 input[type=range] {
 	display: inline-block;
-	width: 55%;
+	width: 39%;
 	vertical-align: middle;
 	-webkit-appearance: none;
 	height: 5px;
@@ -278,7 +282,7 @@ input[type=range]::-ms-thumb {
 /* tasks page */
 .container {
 	width: 970px;
-	padding: 0;
+	padding: 10px 0;
 }
 
 .nav-tabs {
@@ -321,20 +325,24 @@ input[type=range]::-ms-thumb {
 	width: 250px;
 }
 
-.th-date {
-	width: 125px;
-}
-
-.th-priority {
-	width: 61px;
-}
-
 .th-category {
 	width: 118px;
 }
 
+.th-date {
+	width: 80px;
+}
+
+.th-priority {
+	width: 60px;
+}
+
 .th-status {
-	width: 84px;
+	width: 65px;
+}
+
+.th-remove {
+	width: 60px;
 }
 
 .col-md-6 {
@@ -345,10 +353,6 @@ input[type=range]::-ms-thumb {
 
 .td-btn {
 	padding: 3px;
-}
-
-.th-remove {
-	width: 74px;
 }
 
 .deleteBtn {
@@ -391,6 +395,10 @@ input[type=range]::-ms-thumb {
 }
 
 @media only screen and (max-width: 767px) {
+	h1 {
+		margin: 40px 0 20px;
+	}
+
 	.content-wrapper {
 		padding: 20px 10px;
 		display: block;
@@ -403,11 +411,6 @@ input[type=range]::-ms-thumb {
 
 	#main-wrapper {
 		margin: auto;
-	}
-
-	.container {
-		width: 100%;
-		padding: 0;
 	}
 
 	.form-group {
@@ -456,7 +459,7 @@ input[type=range]::-ms-thumb {
 
 	/* Tasks Page */
 	.container {
-		padding: 25px 0;
+		width: 100%;
 	}
 
 	tr th, tr td {
@@ -481,7 +484,6 @@ input[type=range]::-ms-thumb {
 @media only screen and (max-width: 576px) {
 	h1 {
 		font-size: 32px;
-		margin: 40px 0 20px;
 	}
 
 	.col-sm-2 {

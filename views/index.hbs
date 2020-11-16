@@ -2,7 +2,7 @@
     <div class="nav-wrapper">
         <div class="nav-content"><span>Hello {{username}},</span><a class="nav-link" href="/logout">Sign out</a></div>
     </div>
-    <div id="main-wrapper"><br>
+    <div id="main-wrapper">
         <h1>MyTasks</h1>
         <ul class="nav nav-tabs">
             <li class="active"><a href="/">Add Item</a></li>
@@ -34,7 +34,7 @@
                 <label for="active">Active</label>
                 <input type="radio" id="in-progress" name="status" value="In Progress">
                 <label for="in-progress">In Progress</label>
-                <input type="radio" id="urgent" name="status" value="Urgent">
+                <input type="radio" id="urgent" name="status" value="Finished">
                 <label for="urgent">Urgent</label>
             </div>
             <div id="priority-wrapper">
@@ -46,10 +46,10 @@
                     class="form-control" 
                     value="1" 
                     min="1" 
-                    max="5" 
-                    oninput="priorityOutputId.value = priorityInputId.value"
+                    max="3" 
+                    oninput="priorityOutputId.value = changeInputRange(priorityInputId.value)"
                 >
-                <output name="priorityOutput" id="priorityOutputId">1</output>
+                <output name="priorityOutput" id="priorityOutputId">low</output>
             </div>
             <br><br>
             <div id="btn-wrapper">
