@@ -42,11 +42,11 @@ function loadTasks() {
 
                 $('#tasks').append(
                     '<tr><td>' + item.task + 
-                    '</td><td>' + item.category + 
+                    '</td><td class="td-category">' + item.category + 
                     '</td><td class="td-date">' + item.date + 
                     '</td><td class="td-status">' + item.status + 
-                    '</td><td style="color:' + color + '">' + item.priority + 
-                    '</td><td class="td-btn"><button class="deleteBtn btn btn-primary" onClick="deleteTask(\'' + item._id + '\')">Remove</button>' + 
+                    '</td><td class="td-priority" style="color:' + color + '">' + item.priority + 
+                    '</td><td class="td-btn"><button class="deleteBtn btn btn-primary" onClick="deleteTask(\'' + item._id + '\')">Delete</button>' + 
                     '</td></tr>'
                 );
             });

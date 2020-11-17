@@ -281,7 +281,7 @@ input[type=range]::-ms-thumb {
 
 /* tasks page */
 .container {
-	width: 970px;
+	width: 880px;
 	padding: 10px 0;
 }
 
@@ -309,50 +309,57 @@ input[type=range]::-ms-thumb {
 	font-weight: bold !important;
 }
 
+.table-condensed>tbody>tr>td {
+	padding: 4px 5px;
+}
+
 #tasks tr th {
 	border-color: #658bad;
     background-color: #337ab7;
-    color: #f9f9f9;
+	color: #f9f9f9;
+	text-align: center;
+	padding: 4px 5px;
 }
 
 #tasks tr td {
 	background-color: #fcfeff;
 	color: #505050;
 	border-color: #e8e8e8;
+	vertical-align: middle;
 }
 
 .th-task {
-	width: 250px;
+	width: 100%;
 }
 
 .th-category {
-	width: 118px;
+	min-width: 120px;
 }
 
 .th-date {
-	width: 80px;
-}
-
-.th-priority {
-	width: 60px;
+	min-width: 128px;
 }
 
 .th-status {
-	width: 65px;
+	min-width: 86px;
+}
+
+.th-priority {
+	min-width: 66px;
 }
 
 .th-remove {
-	width: 60px;
+	min-width: auto;
 }
+
+.td-category, .td-date, .td-status, .td-priority, .td-btn {
+	text-align: center;
+} 
 
 .col-md-6 {
 	margin-top: 5px;
 	padding: 0;
-	min-width: 970px;
-}
-
-.td-btn {
-	padding: 3px;
+	min-width: 880px;
 }
 
 .deleteBtn {
@@ -378,19 +385,21 @@ input[type=range]::-ms-thumb {
 
 @media only screen and (max-width: 992px) {
 	.container {
-		width: 740px;
+		width: 860px;
 	}
 
 	.col-md-6 {
-		min-width: 740px;
+		min-width: 860px;
+	}
+}
+
+@media only screen and (max-width: 880px) {
+	.container {
+		width: 755px;
 	}
 
-	.th-task {
-		width: 105px;
-	}
-
-	.th-category {
-		width: 76px;
+	.col-md-6 {
+		min-width: 755px;
 	}
 }
 
@@ -462,22 +471,18 @@ input[type=range]::-ms-thumb {
 		width: 100%;
 	}
 
-	tr th, tr td {
-		padding: 4px 3px;
+	.th-date {
+		min-width: 95px;	
 	}
 
-	.th-task, .th-priority, .th-category, .th-status, .th-remove {
-		width: 100%;
+	.th-category, .th-status, .th-priority {
+		min-width: auto;
 	}
 	
 	.col-md-6 {
 		margin-top: 5px;
 		padding: 0;
 		min-width: 0;
-	}
-	
-	.td-btn {
-		padding: 3px;
 	}	
 }
 
@@ -492,6 +497,15 @@ input[type=range]::-ms-thumb {
 
 	table {
 		font-size: 11px;
+		cursor: default;
+	}
+
+	.table-condensed>tbody>tr>td {
+		padding: 4px;
+	}
+
+	.th-date {
+		min-width: 75px;	
 	}
 
 	.deleteBtn {
