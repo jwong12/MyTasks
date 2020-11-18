@@ -17,14 +17,14 @@ $(function ready() {
             dataType: 'json',
             data: taskInfo,
             success: function () {
-                $('#statusMsg').removeClass();
-                $('#statusMsg').addClass('alert alert-success');
-                $('#statusMsg').html('The task was added.');
+                $('#status-msg').removeClass();
+                $('#status-msg').addClass('alert alert-success');
+                $('#status-msg').html('The task was added.');
             },
             error: function (json) {
-                $('#statusMsg').removeClass();
-                $('#statusMsg').addClass('alert alert-danger');
-                $('#statusMsg').html(json.responseJSON.msg);
+                $('#status-msg').removeClass();
+                $('#status-msg').addClass('alert alert-danger');
+                $('#status-msg').html(json.responseJSON.msg);
             }
         });
     });

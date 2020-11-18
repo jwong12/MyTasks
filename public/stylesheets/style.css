@@ -282,7 +282,8 @@ input[type=range]::-ms-thumb {
 
 #status-msg {
 	display: inline-block;
-	margin: 10px;
+	margin: 20px;
+	cursor: default;
 }
 
 .alert {
@@ -343,10 +344,12 @@ input[type=range]::-ms-thumb {
 }
 
 #tasks tr td {
+	position: relative;
+	text-align: center;
+	vertical-align: middle;
 	background-color: #fcfeff;
 	color: #505050;
 	border-color: #e8e8e8;
-	vertical-align: middle;
 }
 
 .th-task {
@@ -373,9 +376,9 @@ input[type=range]::-ms-thumb {
 	min-width: auto;
 }
 
-.td-category, .td-date, .td-status, .td-priority, .td-btn {
-	text-align: center;
-} 
+.td-status {
+	white-space: nowrap;
+}
 
 .col-md-6 {
 	margin-top: 5px;
@@ -390,6 +393,33 @@ input[type=range]::-ms-thumb {
 	color: #f9f9f9;
 	border-color: #337ab7;
 	border-radius: 12px;
+}
+
+.ul-selection {
+    background-color: white;
+    position: absolute;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 999;
+    border: 1px solid rgb(184, 184, 184);
+    box-shadow: 1px 1px 3px 0 #bbbbbb;
+}
+
+.ul-selection li {
+    white-space: nowrap;
+    list-style-type: none;
+    padding: 5px 10px;
+}
+
+.ul-selection li:hover {
+    background-color: rgb(228, 228, 228);
+    cursor: pointer;
+}
+
+.status, .priority {
+    padding: 2px 5px;
+    cursor: pointer;
 }
 
 @media only screen and (max-width: 992px) {
