@@ -5,10 +5,10 @@ const router = require('express').Router();
 
 function authenticationMiddleware(req, res, next) {
     if (req.isAuthenticated()) {
-        return next()
+        return next();
     }
 
-    res.redirect('/login')
+    res.redirect('/login');
 }
 
 router.get('/register', function(req, res) {
@@ -30,7 +30,7 @@ router.post('/register', function(req, res, next) {
             task: "Implement Counting sort algo (Demo #1)",
             category: "Personal Project",
             date: "Tue Nov 17 2020",
-            status: "Finished",
+            status: "done",
             priority: "high",
         };
 
@@ -38,7 +38,7 @@ router.post('/register', function(req, res, next) {
             task: "Finish Task Manager project (Demo #2)",
             category: "Personal Project",
             date: "Mon Nov 23 2020",
-            status: "In Progress",
+            status: "in progress",
             priority: "high",
         };
 
@@ -46,7 +46,7 @@ router.post('/register', function(req, res, next) {
             task: "Apply for dev jobs (Demo #3)",
             category: "Work",
             date: "Wed Nov 18 2020",
-            status: "In Progress",
+            status: "in progress",
             priority: "medium",
         };
 
@@ -54,7 +54,7 @@ router.post('/register', function(req, res, next) {
             task: "Grocery shopping (Demo #4)",
             category: "Chore",
             date: "Sat Nov 28 2020",
-            status: "Active",
+            status: "active",
             priority: "medium",
         };
 
@@ -62,7 +62,7 @@ router.post('/register', function(req, res, next) {
             task: "Hiking day @ Grouse 11am (Demo #5)",
             category: "Personal",
             date: "Sun Nov 29 2020",
-            status: "Active",
+            status: "active",
             priority: "low",
         };
 

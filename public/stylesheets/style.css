@@ -126,6 +126,7 @@ h4 {
 }
 
 #main-wrapper {
+	width: 450px;
 	padding: 10px 0;
 }
 
@@ -264,8 +265,7 @@ input[type=range]::-ms-thumb {
 }
 
 #btn-wrapper {
-	display: inline-grid;
-	justify-content: end;
+	text-align: center;
 	width: 450px;
 }
 
@@ -273,10 +273,31 @@ input[type=range]::-ms-thumb {
 	outline: none;
 	color: #f9f9f9;
 	border-radius: 12px;
+	padding: 8px 14px;
+}
+
+#status-wrapper {
+	text-align: center;
+}
+
+#status-msg {
+	display: inline-block;
+	margin: 10px;
 }
 
 .alert {
-	padding: 10px 15px;
+	padding: 9px 18px;
+	border-radius: 10px;
+}
+
+.alert-success {
+	color: #3f8841;
+	border-color: #a6cca7;
+}
+
+.alert-danger {
+	color: #ab4e4d;
+	border-color: #dcc4c3;
 }
 
 /* tasks page */
@@ -369,18 +390,6 @@ input[type=range]::-ms-thumb {
 	color: #f9f9f9;
 	border-color: #337ab7;
 	border-radius: 12px;
-}
-
-#statusMsg {
-	margin-top: 20px;
-}
-
-.alert-success {
-	border-color: #85bf86;
-}
-
-.alert-danger {
-	border-color: #d48887;
 }
 
 @media only screen and (max-width: 992px) {
@@ -500,6 +509,10 @@ input[type=range]::-ms-thumb {
 		cursor: default;
 	}
 
+	#tasks tr th {
+		padding: 4px;
+	}
+
 	.table-condensed>tbody>tr>td {
 		padding: 4px;
 	}
@@ -510,8 +523,26 @@ input[type=range]::-ms-thumb {
 
 	.deleteBtn {
 		font-size: 11px;
-		padding: 2px 3px;
+		padding: 2px 4px;
 		outline: none;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	#main-wrapper {
+		width: 100%;
+	}
+
+	#tasks tr th {
+		padding: 4px 3px;
+	}
+
+	.table-condensed>tbody>tr>td {
+		padding: 4px 3px;
+	}
+
+	.th-date {
+		min-width: 70px;	
 	}
 }
 

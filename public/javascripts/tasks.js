@@ -1,5 +1,7 @@
+let tasks = [];
+
 $(function ready() {
-    loadTasks();
+    requestTasksApi();
 });
 
 function deleteTask(id) {
@@ -21,35 +23,39 @@ function refreshPage() {
     location.reload();
 }
 
-function loadTasks() {
+function requestTasksApi() {
     $("#loader").show();    
     
     $.getJSON("/api/tasks", function (data) {
         if(data) {
-            $("#loader").hide();
-            
-            data.forEach(function (item) {
-                let color;
-                if (item.priority === "low") {
-                    color = '#29a229';
-
-                } else if (item.priority === "high") {
-                    color = '#f53e3e';
-
-                } else {
-                    color = '#9e9e0d';
-                }
-
-                $('#tasks').append(
-                    '<tr><td>' + item.task + 
-                    '</td><td class="td-category">' + item.category + 
-                    '</td><td class="td-date">' + item.date + 
-                    '</td><td class="td-status">' + item.status + 
-                    '</td><td class="td-priority" style="color:' + color + '">' + item.priority + 
-                    '</td><td class="td-btn"><button class="deleteBtn btn btn-primary" onClick="deleteTask(\'' + item._id + '\')">Delete</button>' + 
-                    '</td></tr>'
-                );
-            });
+            tasks = data;
+            loadTasks();   
+            $("#loader").hide();       
         }
+    });
+}
+
+function loadTasks() {
+    tasks.forEach(function (item) {
+        let color;
+        if (item.priority === "low") {
+            color = '#29a229';
+
+        } else if (item.priority === "high") {
+            color = '#f53e3e';
+
+        } else {
+            color = '#9e9e0d';
+        }
+
+        $('#tasks').append(
+            '<tr><td>' + item.task + 
+            '</td><td class="td-category">' + item.category + 
+            '</td><td class="td-date">' + item.date + 
+            '</td><td class="td-status">' + item.status + 
+            '</td><td class="td-priority" style="color:' + color + '">' + item.priority + 
+            '</td><td class="td-btn"><button class="deleteBtn btn btn-primary" onClick="deleteTask(\'' + item._id + '\')">Delete</button>' + 
+            '</td></tr>'
+        );
     });
 }

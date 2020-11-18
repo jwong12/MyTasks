@@ -3,7 +3,7 @@ $(function ready() {
         event.preventDefault();
         
         const taskInfo = JSON.stringify({
-            title: $('#task').val(),
+            task: $('#task').val(),
             category: $('#category').val(),
             date: $('#date').val(),
             priority: $('#priorityOutputId').val(),
