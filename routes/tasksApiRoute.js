@@ -50,8 +50,7 @@ router.post('/',
 			result.save((err) => {
 				if (err) {
 					console.log('Failed to save the Tasks in Mongodb', err);
-					res.status(500).json({ status: 'Failed to save the Tasks' });
-					return;
+					return res.status(500).json({ status: 'Failed to save the Tasks' });
 				}
 			
 				res.json({ status: 'Successfully added the Tasks' });
@@ -80,9 +79,11 @@ router.put('/update/:id', function (req, res) {
 			result.save((err) => {
 				if (err) {
 					console.log('Failed to update a task in Mongodb', err);
-					res.status(500).json({ status: 'Failed to update a task' });
-					return;
-				}			
+					return res.status(500).json({ status: 'Failed to update a task' });
+
+				} else {
+					res.json(null);
+				}				
 			});			
 		}				
 	});
@@ -99,9 +100,11 @@ router.delete('/delete/:id', function (req, res) {
 			result.save((err) => {
 				if (err) {
 					console.log('Failed to remove a task in Mongodb', err);
-					res.status(500).json({ status: 'Failed to remove a task' });
-					return;
-				}			
+					return res.status(500).json({ status: 'Failed to remove a task' });
+
+				} else {
+					res.json(null);
+				}
 			});			
 		}				
 	});

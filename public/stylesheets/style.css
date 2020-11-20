@@ -586,15 +586,16 @@ input[type=range]::-ms-thumb {
 
 /* loader */
 #loader-wrapper {
-	position: relative;
-	text-align: -webkit-center;
-	text-align: -moz-center;
-    height: 150px;
+	position: absolute;
+    top: calc(50vh - 25px);
+    left: calc(50% - 25px);
+    height: 50px;
+	width: 50px;
+	box-sizing: border-box;
 }
 
 #loader {
 	position: relative;
-    top: 100px;
 	border: 7px solid #fcfeff;
 	border-radius: 50%;
 	border-top: 7px solid #3498db;
