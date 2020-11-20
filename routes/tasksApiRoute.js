@@ -60,7 +60,35 @@ router.post('/',
 	}
 );
 
-router.delete('/:id', function (req, res) {
+router.put('/update/:id', function (req, res) {
+	const query = Tasks.where({ username: req.user.username });
+	
+	query.findOne((err, result) => {
+		if (err) return handleError(err);
+
+		if (result) {
+			let subdoc = result.tasks.id(req.body._id);
+
+			if (req.body.status) {
+				subdoc.status = req.body.status;
+			} 
+
+			if (req.body.priority) {
+				subdoc.priority = req.body.priority;
+			}
+			
+			result.save((err) => {
+				if (err) {
+					console.log('Failed to update a task in Mongodb', err);
+					res.status(500).json({ status: 'Failed to update a task' });
+					return;
+				}			
+			});			
+		}				
+	});
+});
+
+router.delete('/delete/:id', function (req, res) {
 	const query = Tasks.where({ username: req.user.username });
 	
 	query.findOne((err, result) => {
@@ -74,11 +102,9 @@ router.delete('/:id', function (req, res) {
 					res.status(500).json({ status: 'Failed to remove a task' });
 					return;
 				}			
-			})
-			
+			});			
 		}				
 	});
-	
 });
 
 module.exports = router;

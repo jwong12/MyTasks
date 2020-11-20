@@ -30,12 +30,12 @@
             </div>       
             <label for="status" class="col-sm-2 control-label" id="status">Status:</label>
             <div id="radio-buttons">
-                <input type="radio" id="active" name="status" value="Active" checked="checked">
+                <input type="radio" id="active" name="status" value="active" checked="checked">
                 <label for="active">active</label>
-                <input type="radio" id="in-progress" name="status" value="In Progress">
+                <input type="radio" id="in-progress" name="status" value="in progress">
                 <label for="in-progress">in progress</label>
-                <input type="radio" id="urgent" name="status" value="Finished">
-                <label for="urgent">urgent</label>
+                <input type="radio" id="done" name="status" value="done">
+                <label for="done">done</label>
             </div>
             <div id="priority-wrapper">
                 <label for="priorityInput" class="col-sm-2 control-label" id="priorityLabel">Priority:</label>
@@ -51,11 +51,11 @@
                 >
                 <output name="priorityOutput" id="priorityOutputId">low</output>
             </div>
-            <div id="status-wrapper"><div id="status-msg"></div></div>
             <div id="btn-wrapper">
                 <button type="submit" class="btn btn-primary">Add Task</button>
             </div>
-        </form><br>
+            <div id="status-wrapper"><div id="status-msg"></div></div>
+        </form>
     </div>
 </div>
 <script src="/javascripts/datepicker.min.js"></script>

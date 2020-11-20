@@ -5,9 +5,7 @@ $(function ready() {
 });
 
 function deleteTask(id) {
-    const taskId = JSON.stringify({
-        id
-    });
+    const taskId = JSON.stringify({ id });
 
     for (let i = 0; i < tasks.length; i++) {
         if (tasks[i]._id === id) {
@@ -17,13 +15,28 @@ function deleteTask(id) {
     }
 
     $.ajax({
-        url: '/api/tasks/:' + id,
+        url: '/api/tasks/delete/:' + id,
         type: 'DELETE',
         contentType: 'application/json',
         dataType: 'json',
         data: taskId,
         success: reloadTasksDom()
-    })   
+    });
+}
+
+function updateTask(taskProperty, taskIndex, propertyValue) {
+    const task = tasks[taskIndex];
+    task[taskProperty] = propertyValue;
+    const jsonTask = JSON.stringify(tasks[taskIndex]);
+
+    $.ajax({
+        url: '/api/tasks/update/:' + task._id,
+        type: 'PUT',
+        contentType: 'application/json',
+        dataType: 'json',
+        data: jsonTask,
+        success: () => console.log('success')
+    });
 }
 
 function requestTasksApi() {
@@ -75,10 +88,10 @@ function loadTasksDom() {
             color = '#29a229';
 
         } else if (tasks[i].priority === "medium") {
-            color = '#9e9e0d';
+            color = '#a28f00';
 
         } else {
-            color = '#f53e3e';
+            color = '#c53e3e';
         }
         const divPriority = document.createElement('div');
         divPriority.className = "priority";        
@@ -91,6 +104,7 @@ function loadTasksDom() {
         buttonDelete.innerText = 'Delete';
         buttonDelete.className = 'deleteBtn btn btn-primary';
         buttonDelete.addEventListener('click', () => deleteTask(tasks[i]._id));
+        cellDelete.className = 'td-delete';
         cellDelete.appendChild(buttonDelete);
 
         cellTask.textContent = tasks[i].task;
@@ -114,7 +128,7 @@ function changeInputRange(value) {
     }
 }
 
-function selectTaskProperty(taskPropertyOptions, taskPropertyNodes, taskIndex, changeTaskPropertyFunc) {
+function selectTaskProperty(taskProperty, taskPropertyOptions, taskPropertyNodes, taskIndex, changeTaskPropertyFunc) {
     const ul = document.createElement('ul');
     ul.className = 'ul-selection';
 
@@ -122,17 +136,18 @@ function selectTaskProperty(taskPropertyOptions, taskPropertyNodes, taskIndex, c
         const li = document.createElement('li');
         li.textContent = option;     
         li.addEventListener('click', () => {
-            console.log('li clicked'); //
             changeTaskPropertyFunc(taskPropertyNodes[taskIndex].childNodes[0], taskIndex, option);
+            updateTask(taskProperty, taskIndex, option);
+
             switch(option) {
                 case 'low':
                     taskPropertyNodes[taskIndex].childNodes[0].style.color = '#29a229';
                     break;
                 case 'medium':
-                    taskPropertyNodes[taskIndex].childNodes[0].style.color = '#9e9e0d';
+                    taskPropertyNodes[taskIndex].childNodes[0].style.color = '#a28f00';
                     break;
                 case 'high':
-                    taskPropertyNodes[taskIndex].childNodes[0].style.color = '#f53e3e';
+                    taskPropertyNodes[taskIndex].childNodes[0].style.color = '#c53e3e';
                     break;
                 default:
             }
@@ -146,8 +161,6 @@ function selectTaskProperty(taskPropertyOptions, taskPropertyNodes, taskIndex, c
     let isUlPopUpOpen = false;
 
     function handleClickOnUl(){   
-        console.log('window clicked'); //
-
         if (isUlPopUpOpen) {
             taskPropertyNodes[taskIndex].childNodes[0].style.fontWeight = "normal";
             ul.remove();
@@ -163,13 +176,15 @@ function selectStatus(index) {
 
     if (tdStatusNodes[index].childNodes.length < 2) {
         const statuses = ['active', 'in progress', 'done'];
-        selectTaskProperty(statuses, tdStatusNodes, index, changeTaskStatus);
+        selectTaskProperty("status", statuses, tdStatusNodes, index, changeTaskStatus);
     }
 }
 
 function changeTaskStatus(node, index, newStatus) {
-    tasks[index].status = newStatus;
-    node.textContent = newStatus;
+    if (tasks[index].status !== newStatus) {
+        tasks[index].status = newStatus;
+        node.textContent = newStatus;        
+    }    
 }
 
 function selectPriority(index) {
@@ -177,11 +192,13 @@ function selectPriority(index) {
 
     if (tdPriorityNodes[index].childNodes.length < 2) {
         const priorities = ['low', 'medium', 'high'];
-        selectTaskProperty(priorities, tdPriorityNodes, index, changeTaskPriority);
+        selectTaskProperty("priority", priorities, tdPriorityNodes, index, changeTaskPriority);
     }
 }
 
 function changeTaskPriority(node, index, newPriority) {
-    tasks[index].priority = newPriority;
-    node.textContent = newPriority;
+    if (tasks[index].priority !== newPriority) {
+        tasks[index].priority = newPriority;
+        node.textContent = newPriority;
+    }    
 }

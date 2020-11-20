@@ -21,7 +21,7 @@ router.post('/register', function(req, res, next) {
     Account.register(new Account({username: req.body.username}), req.body.password, function(err) {
         if (err) {
             console.log('error while registering user!', err);
-            return res.render('register', { errorStatus : '** ' + err.message + '.' });
+            return res.render('register', { errorStatus : err.message + '.' });
         }
 
         console.log('user registered!');
@@ -73,10 +73,10 @@ router.post('/register', function(req, res, next) {
 				console.log('Failed to save the Tasks in Mongodb', err);
 				res.status(500).json({ status: 'Failed to save the Tasks' });
 				return;
-			}
+            }
+            
+            res.render('login', { success : 'The account was created.' });            
 		});
-
-        res.render('login', { success : '** The account was created.' });
     });
 });
 
@@ -90,7 +90,7 @@ router.post('/login', function(req, res, next) {
 
         if (!user) {
             console.log(info.message);
-            return res.render('login', { errorStatus : '** ' + info.message + '.' });
+            return res.render('login', { errorStatus : info.message + '.' });
         }
 
         req.logIn(user, function(err) {

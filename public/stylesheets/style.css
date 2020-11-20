@@ -92,11 +92,13 @@ h4 {
 .successMsg {
 	color: #128212;
 	line-height: 32px;
+	white-space: nowrap;
 }
 
 .errorMsg {
 	color: #de0c0c;
 	line-height: 32px;
+	white-space: nowrap;
 }
 
 /* add task page */
@@ -331,10 +333,6 @@ input[type=range]::-ms-thumb {
 	font-weight: bold !important;
 }
 
-.table-condensed>tbody>tr>td {
-	padding: 4px 5px;
-}
-
 #tasks tr th {
 	border-color: #658bad;
     background-color: #337ab7;
@@ -365,19 +363,32 @@ input[type=range]::-ms-thumb {
 }
 
 .th-status {
-	min-width: 86px;
+	min-width: 91px;
 }
 
 .th-priority {
-	min-width: 66px;
+	min-width: 70px;
 }
 
 .th-remove {
 	min-width: auto;
 }
 
+.table-condensed>tbody>tr>td {
+	padding: 1px;
+}
+
 .td-status {
 	white-space: nowrap;
+}
+
+.status, .priority {
+    padding: 4px 5px;
+    cursor: pointer;
+}
+
+.table-condensed>tbody>tr>td.td-delete {
+	padding: 3px;
 }
 
 .col-md-6 {
@@ -388,7 +399,7 @@ input[type=range]::-ms-thumb {
 
 .deleteBtn {
 	font-size: 12px;
-	padding: 4px 8px;
+	padding: 4px 9px;
 	outline: none;
 	color: #f9f9f9;
 	border-color: #337ab7;
@@ -402,23 +413,19 @@ input[type=range]::-ms-thumb {
     margin: 0;
     padding: 0;
     z-index: 999;
-    border: 1px solid rgb(184, 184, 184);
+	border: 1px solid rgb(184, 184, 184);
+	border-radius: 3px;
     box-shadow: 1px 1px 3px 0 #bbbbbb;
 }
 
 .ul-selection li {
     white-space: nowrap;
     list-style-type: none;
-    padding: 5px 10px;
+    padding: 4px 12px;
 }
 
 .ul-selection li:hover {
-    background-color: rgb(228, 228, 228);
-    cursor: pointer;
-}
-
-.status, .priority {
-    padding: 2px 5px;
+    background-color: rgb(233, 233, 233);
     cursor: pointer;
 }
 
@@ -543,12 +550,12 @@ input[type=range]::-ms-thumb {
 		padding: 4px;
 	}
 
-	.table-condensed>tbody>tr>td {
-		padding: 4px;
-	}
-
 	.th-date {
 		min-width: 75px;	
+	}
+
+	.status, .priority {
+		padding: 4px;
 	}
 
 	.deleteBtn {
@@ -567,12 +574,13 @@ input[type=range]::-ms-thumb {
 		padding: 4px 3px;
 	}
 
-	.table-condensed>tbody>tr>td {
-		padding: 4px 3px;
+	.th-date {
+		min-width: 42px;	
 	}
 
-	.th-date {
-		min-width: 70px;	
+	.status, .priority {
+		padding: 4px 3px;
+		white-space: initial;
 	}
 }
 
