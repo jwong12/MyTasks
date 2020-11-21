@@ -178,6 +178,10 @@ h4 {
 	margin-bottom: 10px;
 }
 
+#date {
+	cursor: pointer;
+}
+
 #radio-buttons {
 	display: table-caption;  
 	width: 300px;
@@ -194,10 +198,12 @@ h4 {
     line-height: 10px;
 	vertical-align: middle;
 	font-weight: 500;
+	cursor: pointer;
 }
 
 #radio-buttons input {
 	margin-top: 2px;
+	cursor: pointer;
 }
 
 #priority-wrapper {
@@ -228,6 +234,7 @@ input[type=range] {
 	border-radius: 10px;
 	box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.4);
 	outline: none;
+	cursor: pointer;
 }
 
 input[type=range]::-webkit-slider-thumb {
@@ -350,6 +357,10 @@ input[type=range]::-ms-thumb {
 	border-color: #e8e8e8;
 }
 
+.table {
+	cursor: default;
+}
+
 .th-task {
 	width: 100%;
 }
@@ -372,6 +383,10 @@ input[type=range]::-ms-thumb {
 
 .th-remove {
 	min-width: auto;
+}
+
+.th-status, .th-priority {
+	cursor: pointer;
 }
 
 .table-condensed>tbody>tr>td {

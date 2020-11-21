@@ -1,8 +1,29 @@
 let tasks = [];
 
+const sortOrder = {
+    status: '',
+    date: '',
+    priority: ''
+};
+
 $(function ready() {
     requestTasksApi();
 });
+
+function updateTask(taskProperty, taskIndex, propertyValue) {
+    const task = tasks[taskIndex];
+    task[taskProperty] = propertyValue;
+    const jsonTask = JSON.stringify(tasks[taskIndex]);
+
+    $.ajax({
+        url: '/api/tasks/update/:' + task._id,
+        type: 'PUT',
+        contentType: 'application/json',
+        dataType: 'json',
+        data: jsonTask,
+        success: () => console.log('success')
+    });
+}
 
 function deleteTask(id) {
     const taskId = JSON.stringify({ id });
@@ -21,21 +42,6 @@ function deleteTask(id) {
         dataType: 'json',
         data: taskId,
         success: reloadTasksDom()
-    });
-}
-
-function updateTask(taskProperty, taskIndex, propertyValue) {
-    const task = tasks[taskIndex];
-    task[taskProperty] = propertyValue;
-    const jsonTask = JSON.stringify(tasks[taskIndex]);
-
-    $.ajax({
-        url: '/api/tasks/update/:' + task._id,
-        type: 'PUT',
-        contentType: 'application/json',
-        dataType: 'json',
-        data: jsonTask,
-        success: () => console.log('success')
     });
 }
 
@@ -201,4 +207,92 @@ function changeTaskPriority(node, index, newPriority) {
         tasks[index].priority = newPriority;
         node.textContent = newPriority;
     }    
+}
+
+function handleClickOnStatus() {
+    if (sortOrder.status === '' || sortOrder.status === 'desc') {
+        sortOrder.status = 'asc';
+        sortByStatus('active');
+
+    } else if (sortOrder.status === 'asc') {
+        sortOrder.status = 'desc';
+        sortByStatus('done');
+    } 
+    
+    sortOrder.date = '';
+    sortOrder.priority = '';
+}
+
+function sortByStatus(sortOrder) {
+    let currIdx = 0;
+
+    while(currIdx < tasks.length && tasks[currIdx].status === sortOrder) {
+        currIdx++;
+    }
+
+    for (let i = currIdx+1; i < tasks.length; i++) {
+        if (tasks[i].status === sortOrder) {
+            const tmp = tasks[i];
+            tasks[i] = tasks[currIdx];
+            tasks[currIdx++] = tmp;
+        }         
+    }
+
+    while(currIdx < tasks.length && tasks[currIdx].status === 'in progress') {
+        currIdx++;
+    }
+
+    for (let i = currIdx + 1; i < tasks.length; i++) {
+        if (tasks[i].status === 'in progress') {
+            const tmp = tasks[i];
+            tasks[i] = tasks[currIdx];
+            tasks[currIdx++] = tmp;
+        }         
+    }
+
+    loadTasksDom();
+}
+
+function handleClickOnPriority() {
+    if (sortOrder.priority === '' || sortOrder.priority === 'desc') {
+        sortOrder.priority = 'asc';
+        sortByPriority('low');
+
+    } else if (sortOrder.priority === 'asc') {
+        sortOrder.priority = 'desc';
+        sortByPriority('high');
+    } 
+    
+    sortOrder.date = '';
+    sortOrder.status = '';
+}
+
+function sortByPriority(sortOrder) {
+    let currIdx = 0;
+
+    while(currIdx < tasks.length && tasks[currIdx].priority === sortOrder) {
+        currIdx++;
+    }
+
+    for (let i = currIdx+1; i < tasks.length; i++) {
+        if (tasks[i].priority === sortOrder) {
+            const tmp = tasks[i];
+            tasks[i] = tasks[currIdx];
+            tasks[currIdx++] = tmp;
+        }         
+    }
+
+    while(currIdx < tasks.length && tasks[currIdx].priority === 'medium') {
+        currIdx++;
+    }
+
+    for (let i = currIdx + 1; i < tasks.length; i++) {
+        if (tasks[i].priority === 'medium') {
+            const tmp = tasks[i];
+            tasks[i] = tasks[currIdx];
+            tasks[currIdx++] = tmp;
+        }         
+    }
+
+    loadTasksDom();
 }
