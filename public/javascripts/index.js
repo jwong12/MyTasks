@@ -1,11 +1,14 @@
 $(function ready() {
     $("#submitForm").submit(function (event) {
         event.preventDefault();
-        
+        const date = $('#date').val();
+        const day = date.toString().slice(8,10);
+        const fullDate = date.toString().slice(0,8) + (parseInt(day) < 10 ? day.slice(1,2) : day) + date.toString().slice(10,15);
+
         const taskInfo = JSON.stringify({
             task: $('#task').val(),
             category: $('#category').val(),
-            date: $('#date').val(),
+            date: fullDate,
             priority: $('#priorityOutputId').val(),
             status: $('input[name="status"]:checked').val()
         });

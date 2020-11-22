@@ -78,10 +78,14 @@ function loadTasksDom() {
         const row = tableNode.insertRow(tableNode.rows.length);
         const cellTask = row.insertCell(0);
         const cellCategory = row.insertCell(1);
-        const cellDate = row.insertCell(2);
+        const cellDate = row.insertCell(2);        
         const cellStatus = row.insertCell(3);
         const cellPriority = row.insertCell(4);
         const cellDelete = row.insertCell(5);
+
+        cellDate.className = "td-date";
+        cellDate.setAttribute('id', 'date-tasks' + i);
+        cellDate.title = tasks[i]._id;
 
         const divStatus = document.createElement('div');
         divStatus.className = "status";
