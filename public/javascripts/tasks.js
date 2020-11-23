@@ -1,5 +1,5 @@
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-const DOTW = ['Mon', 'Tues', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+const DOTW = ['Sun', 'Mon', 'Tues', 'Wed', 'Thu', 'Fri', 'Sat'];
 let tasks = [];
 
 const sortOrder = {
@@ -15,7 +15,9 @@ $(function ready() {
 function updateTask(taskProperty, taskIndex, propertyValue) {
     const task = tasks[taskIndex];
     task[taskProperty] = propertyValue;
-    const jsonTask = JSON.stringify(tasks[taskIndex]);
+    const taskCopy = Object.assign({}, {...task});
+    delete taskCopy.dom;
+    const jsonTask = JSON.stringify(taskCopy);
 
     $.ajax({
         url: '/api/tasks/update/:' + task._id,
@@ -28,7 +30,8 @@ function updateTask(taskProperty, taskIndex, propertyValue) {
 }
 
 function deleteTask(id) {
-    const taskId = JStasksON.stringify({ id });
+    const taskId = JSON.stringify({ id });
+    console.log(id);
 
     for (let i = 0; i < tasks.length; i++) {
         if (tasks[i]._id === id) {
@@ -37,13 +40,15 @@ function deleteTask(id) {
         }
     }
 
+    console.log(tasks)
+
     $.ajax({
         url: '/api/tasks/delete/:' + id,
         type: 'DELETE',
         contentType: 'application/json',
         dataType: 'json',
         data: taskId,
-        success: reloadTasksDom()
+        success: loadTasksDom()
     });
 }
 
@@ -59,11 +64,6 @@ function requestTasksApi() {
     });
 }
 
-function reloadTasksDom() {
-    removeAllRows();
-    loadTasksDom();
-}
-
 function removeAllRows() {
     const tableNode = document.getElementById('tasks');
 
@@ -74,56 +74,68 @@ function removeAllRows() {
 
 function loadTasksDom() {
     const tableNode = document.getElementById('tasks');
+    const tBody = tableNode.getElementsByTagName('tbody')[0];
     removeAllRows();
 
-    for (let i = 0; i < tasks.length; i++) {
-        const row = tableNode.insertRow(tableNode.rows.length);
-        const cellTask = row.insertCell(0);
-        const cellCategory = row.insertCell(1);
-        const cellDate = row.insertCell(2);        
-        const cellStatus = row.insertCell(3);
-        const cellPriority = row.insertCell(4);
-        const cellDelete = row.insertCell(5);
+    if (tasks.length > 0 && tasks[0].dom) {
+        for (let i = 0; i < tasks.length; i++) {
+            tBody.appendChild(tasks[i].dom);
+        } 
 
-        cellDate.className = "td-date";
-        cellDate.setAttribute('id', 'date-tasks' + i);
-        cellDate.setAttribute('data-taskid', tasks[i]._id);
+    } else {
+        for (let i = 0; i < tasks.length; i++) {
+            const row = tableNode.insertRow(tableNode.rows.length);
+            row.className = "row-task";
+            row.setAttribute('data-taskid', tasks[i]._id);
+            row.setAttribute('data-sortorder', i);
+            const cellTask = row.insertCell(0);
+            const cellCategory = row.insertCell(1);
+            const cellDate = row.insertCell(2);        
+            const cellStatus = row.insertCell(3);
+            const cellPriority = row.insertCell(4);
+            const cellDelete = row.insertCell(5);
 
-        const divStatus = document.createElement('div');
-        divStatus.className = "status";
-        cellStatus.className = 'td-status';
-        divStatus.addEventListener('click', () => selectStatus(i));
-        cellStatus.appendChild(divStatus);
+            cellDate.className = "td-date";
+            cellDate.setAttribute('id', 'date-tasks' + i);
 
-        let color;
-        if (tasks[i].priority === "low") {
-            color = '#29a229';
+            const divStatus = document.createElement('div');
+            divStatus.className = "status";
+            cellStatus.className = 'td-status';
+            divStatus.addEventListener('click', () => selectStatus(i));
+            cellStatus.appendChild(divStatus);
 
-        } else if (tasks[i].priority === "medium") {
-            color = '#a28f00';
+            let color;
+            if (tasks[i].priority === "low") {
+                color = '#29a229';
 
-        } else {
-            color = '#c53e3e';
+            } else if (tasks[i].priority === "medium") {
+                color = '#a28f00';
+
+            } else {
+                color = '#c53e3e';
+            }
+            const divPriority = document.createElement('div');
+            divPriority.className = "priority";        
+            divPriority.style.color = color;
+            cellPriority.className = 'td-priority';
+            divPriority.addEventListener('click', () => selectPriority(i));
+            cellPriority.appendChild(divPriority);
+
+            const buttonDelete = document.createElement('button');
+            buttonDelete.innerText = 'Delete';
+            buttonDelete.className = 'deleteBtn btn btn-primary';
+            const taskId = tasks[i]._id;
+            buttonDelete.addEventListener('click', () => deleteTask(taskId));
+            cellDelete.className = 'td-delete';
+            cellDelete.appendChild(buttonDelete);
+
+            cellTask.textContent = tasks[i].task;
+            cellCategory.textContent = tasks[i].category;
+            cellDate.textContent = formatDate(tasks[i].date);
+            divStatus.textContent = tasks[i].status;
+            divPriority.textContent = tasks[i].priority;
+            tasks[i].dom = row;
         }
-        const divPriority = document.createElement('div');
-        divPriority.className = "priority";        
-        divPriority.style.color = color;
-        cellPriority.className = 'td-priority';
-        divPriority.addEventListener('click', () => selectPriority(i));
-        cellPriority.appendChild(divPriority);
-
-        const buttonDelete = document.createElement('button');
-        buttonDelete.innerText = 'Delete';
-        buttonDelete.className = 'deleteBtn btn btn-primary';
-        buttonDelete.addEventListener('click', () => deleteTask(tasks[i]._id));
-        cellDelete.className = 'td-delete';
-        cellDelete.appendChild(buttonDelete);
-
-        cellTask.textContent = tasks[i].task;
-        cellCategory.textContent = tasks[i].category;
-        cellDate.textContent = formatDate(tasks[i].date);
-        divStatus.textContent = tasks[i].status;
-        divPriority.textContent = tasks[i].priority;
     }
 }
 
@@ -131,7 +143,7 @@ function formatDate(date) {
     const year = date.slice(0,4);
     const month = date.slice(5,7);
     const day = parseInt(date.slice(8,10));
-    const dateObj = new Date(year + '-' + month + '-' + day);
+    const dateObj = new Date(Date.UTC(year, month-1, day, 12, 0, 0));
     return DOTW[dateObj.getDay()] + ', ' + MONTHS[month-1] + ' ' + day + ' ' + year;
 }
 
@@ -222,6 +234,54 @@ function changeTaskPriority(node, index, newPriority) {
         node.textContent = newPriority;
     }    
 }
+
+function handleClickOnDate() {
+    console.log(tasks) //
+    
+    const rowDoms = document.getElementsByClassName('row-task');
+
+    for (let i = 0; i < tasks.length; i++) {
+        tasks[i].dom = rowDoms[i];
+
+        if (rowDoms[i].childNodes[2].dataset.date && rowDoms[i].childNodes[2].dataset.date.length > 0) {
+            for (let j = 0; j < tasks.length; j++) {
+                if (rowDoms[i].dataset.taskid === tasks[j]._id) {
+                    tasks[j].date = rowDoms[i].childNodes[2].dataset.date;
+                    rowDoms[i].childNodes[2].setAttribute('data-date', '');
+                }
+            }
+        }
+    }
+
+    if (sortOrder.date === '' || sortOrder.date === 'desc') {
+        sortOrder.date = 'asc';
+        tasks.sort((a, b) => compareDates(a.date, b.date));
+        loadTasksDom();
+
+    } else if (sortOrder.date === 'asc') {
+        sortOrder.date = 'desc';
+        tasks.sort((a, b) => compareDates(b.date, a.date));
+        loadTasksDom();
+    } 
+
+    assignSortOrder();    
+    sortOrder.status = '';
+    sortOrder.priority = '';
+}
+
+function assignSortOrder() {
+    const rowDoms = document.getElementsByClassName('row-task');
+
+    for (let i = 0; i < rowDoms.length; i++) {
+        rowDoms[i].dataset.sortorder = i;
+    }
+}
+
+function compareDates(a, b) {
+    if (a < b) {return -1;}
+    if (a > b) {return 1;}
+    return 0;
+} 
 
 function handleClickOnStatus() {
     if (sortOrder.status === '' || sortOrder.status === 'desc') {

@@ -2,31 +2,31 @@
 const datepicker = require('js-datepicker');
 
 window.onload = () => {
-    const tdDateDoms = document.getElementsByClassName('td-date');
-    const thDateDom = document.getElementById('th-date');
-    const thDateHeight = thDateDom.getBoundingClientRect().height;
+    const rowDoms = document.getElementsByClassName('row-task');
 
-    for (let i = 0; i < tdDateDoms.length; i++) {
+    for (let i = 0; i < rowDoms.length; i++) {
         const tag = '#date-tasks' + i; 
-        const tdDateHeight = tdDateDoms[i].getBoundingClientRect().height;
-        const height = thDateHeight + ((i + 1) * tdDateHeight);
 
-        const date = datepicker(tag, { 
+        datepicker(tag, { 
             id: i,
             dateSelected: new Date(),
-            onShow: instance => {
+            onShow: (instance) => {
+                const thDateDom = document.getElementById('th-date');
+                const rowHeight = rowDoms[i].getBoundingClientRect().height;
+                const height = thDateDom.getBoundingClientRect().height + instance.positionedEl.rowIndex * rowHeight;
                 instance.calendarContainer.style.setProperty('top', height + "px");
                 instance.calendarContainer.style.setProperty('font-size', '1.6rem');
             },
             onSelect: (instance, date) => {
                 const day = date.toString().slice(8,10);
                 const fullDate = date.toString().slice(0,3) + ', ' + date.toString().slice(4,8) + (parseInt(day) < 10 ? day.slice(1,2) : day) + date.toString().slice(10,15);
-                
-                const obj = {
-                    _id: tdDateDoms[i].dataset.taskid,
-                    date
-                }
+                const utcDate = new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 12, 0, 0));
+                rowDoms[instance.positionedEl.rowIndex - 1].childNodes[2].setAttribute('data-date', utcDate.toISOString());
 
+                const obj = {
+                    _id: rowDoms[instance.positionedEl.rowIndex - 1].dataset.taskid,
+                    date: utcDate.toISOString()
+                }
                 const jsonObj = JSON.stringify(obj);
         
                 $.ajax({
@@ -35,7 +35,7 @@ window.onload = () => {
                     contentType: 'application/json',
                     dataType: 'json',
                     data: jsonObj,
-                    success: () => tdDateDoms[i].textContent = fullDate
+                    success: () => rowDoms[instance.positionedEl.rowIndex - 1].childNodes[2].textContent = fullDate
                 });
             },
         }); 

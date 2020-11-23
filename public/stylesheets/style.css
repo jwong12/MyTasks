@@ -594,7 +594,7 @@ input[type=range]::-ms-thumb {
 	}
 
 	.th-date {
-		min-width: 42px;	
+		min-width: 41px;	
 	}
 
 	.status, .priority {

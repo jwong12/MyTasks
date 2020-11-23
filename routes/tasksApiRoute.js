@@ -43,7 +43,7 @@ router.post('/',
 
 		for (let i = 0; i < MONTHS.length; i++) {
 			if (MONTHS[i] === monthText) {
-				task.date = new Date(year + '-' + (i+1) + '-' + day);
+				task.date = new Date(Date.UTC(year, i, day, 12, 0, 0));
 				break;
 			}
 		}
