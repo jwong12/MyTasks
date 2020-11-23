@@ -385,7 +385,7 @@ input[type=range]::-ms-thumb {
 	min-width: auto;
 }
 
-.th-status, .th-priority {
+.th-date, .th-status, .th-priority {
 	cursor: pointer;
 }
 

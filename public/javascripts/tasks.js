@@ -94,6 +94,7 @@ function loadTasksDom() {
             const cellStatus = row.insertCell(3);
             const cellPriority = row.insertCell(4);
             const cellDelete = row.insertCell(5);
+            const taskId = tasks[i]._id;
 
             cellDate.className = "td-date";
             cellDate.setAttribute('id', 'date-tasks' + i);
@@ -101,7 +102,7 @@ function loadTasksDom() {
             const divStatus = document.createElement('div');
             divStatus.className = "status";
             cellStatus.className = 'td-status';
-            divStatus.addEventListener('click', () => selectStatus(i));
+            divStatus.addEventListener('click', () => selectStatus(taskId));
             cellStatus.appendChild(divStatus);
 
             let color;
@@ -118,13 +119,12 @@ function loadTasksDom() {
             divPriority.className = "priority";        
             divPriority.style.color = color;
             cellPriority.className = 'td-priority';
-            divPriority.addEventListener('click', () => selectPriority(i));
+            divPriority.addEventListener('click', () => selectPriority(taskId));
             cellPriority.appendChild(divPriority);
 
             const buttonDelete = document.createElement('button');
             buttonDelete.innerText = 'Delete';
             buttonDelete.className = 'deleteBtn btn btn-primary';
-            const taskId = tasks[i]._id;
             buttonDelete.addEventListener('click', () => deleteTask(taskId));
             cellDelete.className = 'td-delete';
             cellDelete.appendChild(buttonDelete);
@@ -203,8 +203,19 @@ function selectTaskProperty(taskProperty, taskPropertyOptions, taskPropertyNodes
     }
 }
 
-function selectStatus(index) {
+function selectStatus(taskId) {
+    const rowDoms = document.getElementsByClassName('row-task'); 
     const tdStatusNodes = document.getElementsByClassName('td-status');
+    let index = -1;
+
+    for (let i = 0; i < rowDoms.length; i++) {
+        if (rowDoms[i].dataset.taskid === taskId) {
+            index = i;
+            break;
+        } 
+    }
+
+    if(index < 0) return;
 
     if (tdStatusNodes[index].childNodes.length < 2) {
         const statuses = ['active', 'in progress', 'done'];
@@ -219,8 +230,19 @@ function changeTaskStatus(node, index, newStatus) {
     }    
 }
 
-function selectPriority(index) {
+function selectPriority(taskId) {
+    const rowDoms = document.getElementsByClassName('row-task'); 
     const tdPriorityNodes = document.getElementsByClassName('td-priority');
+    let index = -1;
+
+    for (let i = 0; i < rowDoms.length; i++) {
+        if (rowDoms[i].dataset.taskid === taskId) {
+            index = i;
+            break;
+        } 
+    }
+
+    if(index < 0) return;
 
     if (tdPriorityNodes[index].childNodes.length < 2) {
         const priorities = ['low', 'medium', 'high'];
@@ -235,9 +257,7 @@ function changeTaskPriority(node, index, newPriority) {
     }    
 }
 
-function handleClickOnDate() {
-    console.log(tasks) //
-    
+function handleClickOnDate() {    
     const rowDoms = document.getElementsByClassName('row-task');
 
     for (let i = 0; i < tasks.length; i++) {
