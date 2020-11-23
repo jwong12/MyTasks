@@ -393,6 +393,10 @@ input[type=range]::-ms-thumb {
 	padding: 1px;
 }
 
+.td-date {
+	cursor: pointer;
+}
+
 .td-status {
 	white-space: nowrap;
 }

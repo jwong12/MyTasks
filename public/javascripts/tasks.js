@@ -1,3 +1,5 @@
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const DOTW = ['Mon', 'Tues', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 let tasks = [];
 
 const sortOrder = {
@@ -26,7 +28,7 @@ function updateTask(taskProperty, taskIndex, propertyValue) {
 }
 
 function deleteTask(id) {
-    const taskId = JSON.stringify({ id });
+    const taskId = JStasksON.stringify({ id });
 
     for (let i = 0; i < tasks.length; i++) {
         if (tasks[i]._id === id) {
@@ -85,7 +87,7 @@ function loadTasksDom() {
 
         cellDate.className = "td-date";
         cellDate.setAttribute('id', 'date-tasks' + i);
-        cellDate.title = tasks[i]._id;
+        cellDate.setAttribute('data-taskid', tasks[i]._id);
 
         const divStatus = document.createElement('div');
         divStatus.className = "status";
@@ -119,10 +121,18 @@ function loadTasksDom() {
 
         cellTask.textContent = tasks[i].task;
         cellCategory.textContent = tasks[i].category;
-        cellDate.textContent = tasks[i].date;
+        cellDate.textContent = formatDate(tasks[i].date);
         divStatus.textContent = tasks[i].status;
         divPriority.textContent = tasks[i].priority;
     }
+}
+
+function formatDate(date) {
+    const year = date.slice(0,4);
+    const month = date.slice(5,7);
+    const day = parseInt(date.slice(8,10));
+    const dateObj = new Date(year + '-' + month + '-' + day);
+    return DOTW[dateObj.getDay()] + ', ' + MONTHS[month-1] + ' ' + day + ' ' + year;
 }
 
 function changeInputRange(value) {

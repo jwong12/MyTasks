@@ -3,6 +3,8 @@ const Tasks = require('../models/Tasks');
 
 const router = express.Router();
 
+const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
 function apiAuthenticationMiddleware(req, res, next) {
 	if (req.isAuthenticated()) {
 		return next()
@@ -35,8 +37,18 @@ router.post('/',
 		};
 
 		const task = req.body;
+		const year = task.date.slice(10,15);
+		const monthText = task.date.slice(4,7);
+		const day = task.date.slice(8,10);
+
+		for (let i = 0; i < MONTHS.length; i++) {
+			if (MONTHS[i] === monthText) {
+				task.date = new Date(year + '-' + (i+1) + '-' + day);
+				break;
+			}
+		}
+
 		const query = Tasks.where({ username: req.user.username });
-		
 		query.findOne((err, result) => {
 			if (err) return handleError(err);
 		
@@ -69,7 +81,7 @@ router.put('/update/:id', function (req, res) {
 			let subdoc = result.tasks.id(req.body._id);
 
 			if (req.body.date) {
-				subdoc.date = req.body.date;
+				subdoc.date = new Date(req.body.date);
 			}
 
 			if (req.body.status) {

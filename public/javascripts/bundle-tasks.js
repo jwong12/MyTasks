@@ -23,11 +23,11 @@ window.onload = () => {
             },
             onSelect: (instance, date) => {
                 const day = date.toString().slice(8,10);
-                const fullDate = date.toString().slice(0,8) + (parseInt(day) < 10 ? day.slice(1,2) : day) + date.toString().slice(10,15);
+                const fullDate = date.toString().slice(0,3) + ', ' + date.toString().slice(4,8) + (parseInt(day) < 10 ? day.slice(1,2) : day) + date.toString().slice(10,15);
                 
                 const obj = {
-                    _id: tdDateDoms[i].getAttribute('title'),
-                    date: fullDate
+                    _id: tdDateDoms[i].dataset.taskid,
+                    date
                 }
 
                 const jsonObj = JSON.stringify(obj);
@@ -38,10 +38,7 @@ window.onload = () => {
                     contentType: 'application/json',
                     dataType: 'json',
                     data: jsonObj,
-                    success: () => {
-                        tdDateDoms[i].textContent = obj.date;
-                        date 
-                    }
+                    success: () => tdDateDoms[i].textContent = fullDate
                 });
             },
         }); 
