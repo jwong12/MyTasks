@@ -160,49 +160,6 @@ function changeInputRange(value) {
     }
 }
 
-function selectTaskProperty(taskProperty, taskPropertyOptions, taskPropertyNodes, taskIndex, changeTaskPropertyFunc) {
-    const ul = document.createElement('ul');
-    ul.className = 'ul-selection';
-
-    for (let option of taskPropertyOptions) {
-        const li = document.createElement('li');
-        li.textContent = option;     
-        li.addEventListener('click', () => {
-            changeTaskPropertyFunc(taskPropertyNodes[taskIndex].childNodes[0], taskIndex, option);
-            updateTask(taskProperty, taskIndex, option);
-
-            switch(option) {
-                case 'low':
-                    taskPropertyNodes[taskIndex].childNodes[0].style.color = '#29a229';
-                    break;
-                case 'medium':
-                    taskPropertyNodes[taskIndex].childNodes[0].style.color = '#a28f00';
-                    break;
-                case 'high':
-                    taskPropertyNodes[taskIndex].childNodes[0].style.color = '#c53e3e';
-                    break;
-                default:
-            }
-        });
-        ul.appendChild(li);
-    }
-
-    taskPropertyNodes[taskIndex].childNodes[0].style.fontWeight = "bold";
-    window.addEventListener('click', handleClickOnUl);
-    taskPropertyNodes[taskIndex].appendChild(ul);  
-    let isUlPopUpOpen = false;
-
-    function handleClickOnUl(){   
-        if (isUlPopUpOpen) {
-            taskPropertyNodes[taskIndex].childNodes[0].style.fontWeight = "normal";
-            ul.remove();
-            window.removeEventListener('click', handleClickOnUl);
-        }
-        
-        isUlPopUpOpen = true;
-    }
-}
-
 function selectStatus(taskId) {
     const rowDoms = document.getElementsByClassName('row-task'); 
     const tdStatusNodes = document.getElementsByClassName('td-status');
@@ -255,6 +212,50 @@ function changeTaskPriority(node, index, newPriority) {
         tasks[index].priority = newPriority;
         node.textContent = newPriority;
     }    
+}
+
+function selectTaskProperty(taskProperty, taskPropertyOptions, taskPropertyNodes, taskIndex, changeTaskPropertyFunc) {
+    const ul = document.createElement('ul');
+    ul.className = 'ul-selection';
+    ul.style.top = taskPropertyNodes[taskIndex].getBoundingClientRect().height - 1 + 'px';
+
+    for (let option of taskPropertyOptions) {
+        const li = document.createElement('li');
+        li.textContent = option;     
+        li.addEventListener('click', () => {
+            changeTaskPropertyFunc(taskPropertyNodes[taskIndex].childNodes[0], taskIndex, option);
+            updateTask(taskProperty, taskIndex, option);
+
+            switch(option) {
+                case 'low':
+                    taskPropertyNodes[taskIndex].childNodes[0].style.color = '#29a229';
+                    break;
+                case 'medium':
+                    taskPropertyNodes[taskIndex].childNodes[0].style.color = '#a28f00';
+                    break;
+                case 'high':
+                    taskPropertyNodes[taskIndex].childNodes[0].style.color = '#c53e3e';
+                    break;
+                default:
+            }
+        });
+        ul.appendChild(li);
+    }
+
+    taskPropertyNodes[taskIndex].childNodes[0].style.fontWeight = "bold";
+    window.addEventListener('click', handleClickOnUl);
+    taskPropertyNodes[taskIndex].appendChild(ul);  
+    let isUlPopUpOpen = false;
+
+    function handleClickOnUl(){   
+        if (isUlPopUpOpen) {
+            taskPropertyNodes[taskIndex].childNodes[0].style.fontWeight = "normal";
+            ul.remove();
+            window.removeEventListener('click', handleClickOnUl);
+        }
+        
+        isUlPopUpOpen = true;
+    }
 }
 
 function handleClickOnDate() {    
