@@ -244,14 +244,16 @@ function selectTaskProperty(taskProperty, taskPropertyOptions, taskPropertyNodes
 
     taskPropertyNodes[taskIndex].style.backgroundColor = "#fff5e7";
     taskPropertyNodes[taskIndex].childNodes[0].style.fontWeight = "bold";
-    let isUlPopUpOpen = false;
+    var taskPropertyNode = taskPropertyNodes[taskIndex];
+    var taskPropertyNodeLi = taskPropertyNodes[taskIndex].childNodes[0];
+    var isUlPopUpOpen = false;
     window.addEventListener('click', handleClickOnUl);
     taskPropertyNodes[taskIndex].appendChild(ul);  
 
     function handleClickOnUl(){   
         if (isUlPopUpOpen) {
-            taskPropertyNodes[taskIndex].style.backgroundColor = "#fcfeff";
-            taskPropertyNodes[taskIndex].childNodes[0].style.fontWeight = "600";
+            taskPropertyNode.style.backgroundColor = "#fcfeff";
+            taskPropertyNodeLi.style.fontWeight = "600";
             ul.remove();
             window.removeEventListener('click', handleClickOnUl);
         }
