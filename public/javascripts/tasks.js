@@ -25,13 +25,11 @@ function updateTask(taskProperty, taskIndex, propertyValue) {
         contentType: 'application/json',
         dataType: 'json',
         data: jsonTask,
-        success: () => console.log('success')
     });
 }
 
 function deleteTask(id) {
     const taskId = JSON.stringify({ id });
-    console.log(id);
 
     for (let i = 0; i < tasks.length; i++) {
         if (tasks[i]._id === id) {
@@ -39,8 +37,6 @@ function deleteTask(id) {
             break;
         }
     }
-
-    console.log(tasks)
 
     $.ajax({
         url: '/api/tasks/delete/:' + id,
@@ -96,6 +92,9 @@ function loadTasksDom() {
             const cellDelete = row.insertCell(5);
             const taskId = tasks[i]._id;
 
+            cellTask.className = "td-task";
+            cellCategory.className = "td-category";
+
             cellDate.className = "td-date";
             cellDate.setAttribute('id', 'date-tasks' + i);
 
@@ -107,13 +106,13 @@ function loadTasksDom() {
 
             let color;
             if (tasks[i].priority === "low") {
-                color = '#29a229';
+                color = '#19bf19';
 
             } else if (tasks[i].priority === "medium") {
-                color = '#a28f00';
+                color = '#f5b80f';
 
             } else {
-                color = '#c53e3e';
+                color = '#da3939';
             }
             const divPriority = document.createElement('div');
             divPriority.className = "priority";        
@@ -123,7 +122,7 @@ function loadTasksDom() {
             cellPriority.appendChild(divPriority);
 
             const buttonDelete = document.createElement('button');
-            buttonDelete.innerText = 'Delete';
+            buttonDelete.innerText = 'delete';
             buttonDelete.className = 'deleteBtn btn btn-primary';
             buttonDelete.addEventListener('click', () => deleteTask(taskId));
             cellDelete.className = 'td-delete';
@@ -222,19 +221,20 @@ function selectTaskProperty(taskProperty, taskPropertyOptions, taskPropertyNodes
     for (let option of taskPropertyOptions) {
         const li = document.createElement('li');
         li.textContent = option;     
+
         li.addEventListener('click', () => {
             changeTaskPropertyFunc(taskPropertyNodes[taskIndex].childNodes[0], taskIndex, option);
             updateTask(taskProperty, taskIndex, option);
 
             switch(option) {
                 case 'low':
-                    taskPropertyNodes[taskIndex].childNodes[0].style.color = '#29a229';
+                    taskPropertyNodes[taskIndex].childNodes[0].style.color = '#19bf19';
                     break;
                 case 'medium':
-                    taskPropertyNodes[taskIndex].childNodes[0].style.color = '#a28f00';
+                    taskPropertyNodes[taskIndex].childNodes[0].style.color = '#f5b80f';
                     break;
                 case 'high':
-                    taskPropertyNodes[taskIndex].childNodes[0].style.color = '#c53e3e';
+                    taskPropertyNodes[taskIndex].childNodes[0].style.color = '#da3939';
                     break;
                 default:
             }
@@ -242,14 +242,16 @@ function selectTaskProperty(taskProperty, taskPropertyOptions, taskPropertyNodes
         ul.appendChild(li);
     }
 
+    taskPropertyNodes[taskIndex].style.backgroundColor = "#fff5e7";
     taskPropertyNodes[taskIndex].childNodes[0].style.fontWeight = "bold";
+    let isUlPopUpOpen = false;
     window.addEventListener('click', handleClickOnUl);
     taskPropertyNodes[taskIndex].appendChild(ul);  
-    let isUlPopUpOpen = false;
 
     function handleClickOnUl(){   
         if (isUlPopUpOpen) {
-            taskPropertyNodes[taskIndex].childNodes[0].style.fontWeight = "normal";
+            taskPropertyNodes[taskIndex].style.backgroundColor = "#fcfeff";
+            taskPropertyNodes[taskIndex].childNodes[0].style.fontWeight = "600";
             ul.remove();
             window.removeEventListener('click', handleClickOnUl);
         }
