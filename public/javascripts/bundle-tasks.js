@@ -18,8 +18,14 @@ window.onload = () => {
                     const thDateDom = document.getElementById('th-date');
                     const rowHeight = rowDoms[instance.positionedEl.rowIndex - 1].getBoundingClientRect().height;
                     const height = thDateDom.getBoundingClientRect().height + instance.positionedEl.rowIndex * rowHeight;
+                    rowDoms[instance.positionedEl.rowIndex - 1].childNodes[2].style.backgroundColor = '#fff5e7';
+                    rowDoms[instance.positionedEl.rowIndex - 1].childNodes[2].style.fontWeight = 'bold';
                     instance.calendarContainer.style.setProperty('top', height + "px");
                     instance.calendarContainer.style.setProperty('font-size', '1.6rem');
+                },
+                onHide: instance => {
+                    rowDoms[instance.positionedEl.rowIndex - 1].childNodes[2].style.backgroundColor = '#fcfeff';
+                    rowDoms[instance.positionedEl.rowIndex - 1].childNodes[2].style.fontWeight = 'normal';
                 },
                 onSelect: (instance, date) => {
                     if (date) {

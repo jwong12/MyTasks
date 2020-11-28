@@ -92,13 +92,11 @@ h4 {
 .successMsg {
 	color: #128212;
 	line-height: 32px;
-	white-space: nowrap;
 }
 
 .errorMsg {
 	color: #de0c0c;
 	line-height: 32px;
-	white-space: nowrap;
 }
 
 /* add task page */
@@ -195,7 +193,8 @@ h4 {
 	margin: 0 8px 0 0;
 	padding: 3px 3px 3px 2px;	
 	height: 22px;
-    line-height: 10px;
+	line-height: 10px;
+	font-size: 16px;
 	vertical-align: middle;
 	font-weight: 500;
 	cursor: pointer;
@@ -291,7 +290,7 @@ input[type=range]::-ms-thumb {
 
 #status-msg {
 	display: inline-block;
-	margin: 20px;
+	margin: 25px;
 	cursor: default;
 }
 
@@ -345,7 +344,7 @@ input[type=range]::-ms-thumb {
     background-color: #337ab7;
 	color: #f9f9f9;
 	text-align: center;
-	font-weight: 800;
+	font-weight: 600;
 	letter-spacing: 1px;
 	padding: 4px 5px;
 }
@@ -354,9 +353,13 @@ input[type=range]::-ms-thumb {
 	position: relative;
 	text-align: center;
 	vertical-align: middle;
-	background-color: #fcfeff;
 	color: #505050;
 	border-color: #e8e8e8;
+	cursor: pointer;
+}
+
+#tasks tr td:last-child {
+	cursor: default;
 }
 
 .table {
@@ -393,10 +396,22 @@ input[type=range]::-ms-thumb {
 
 .table-condensed>tbody>tr>td {
 	padding: 1px;
+	background-color: #fcfeff;
 }
 
-.td-date {
-	cursor: pointer;
+.table-condensed>tbody>tr>td.td-activated {
+	padding: 0;
+    background-color: #fff5e7;
+}
+
+.td-input {
+    padding-left: 3px;
+    outline: none;
+    border: 0px none;
+    background-color: #fff5e7;
+	width: 100%;
+	font-weight: bold;
+	text-align: center;
 }
 
 .td-status {
@@ -493,7 +508,6 @@ input[type=range]::-ms-thumb {
 
 	.authentication {
 		margin: auto;
-    	width: fit-content;
 	}
 
 	#main-wrapper {
@@ -538,10 +552,6 @@ input[type=range]::-ms-thumb {
 		display: inline-block;
 		text-align: center;
 		width: 100%;
-	}
-
-	#statusMsg {
-		margin-top: 20px;
 	}
 
 	/* Tasks Page */
@@ -625,6 +635,10 @@ input[type=range]::-ms-thumb {
 
 	.table-condensed>tbody>tr>.td-task, .table-condensed>tbody>tr>.td-category, .table-condensed>tbody>tr>.td-date, .table-condensed>tbody>tr>.td-delete {
 		padding: 2px;
+	}
+
+	#priority-wrapper {
+		margin: 25px 0;
 	}
 
 	.status, .priority {

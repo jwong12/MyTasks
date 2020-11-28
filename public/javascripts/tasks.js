@@ -91,9 +91,65 @@ function loadTasksDom() {
             const cellPriority = row.insertCell(4);
             const cellDelete = row.insertCell(5);
             const taskId = tasks[i]._id;
+            const input = document.createElement('input');
+            const inputObj = { isFocused: false };
+            let originalInputText;
 
-            cellTask.className = "td-task";
-            cellCategory.className = "td-category";
+            cellTask.addEventListener('click', () => {
+                handleInputChange(cellTask, 'task');
+            }); 
+    
+            cellCategory.addEventListener('click', () => {
+                handleInputChange(cellCategory, 'category');
+            }); 
+
+            function handleInputChange(cellDom, taskProperty) {
+                if (!inputObj.isFocused) {
+                    cellDom.className = 'td-activated';
+                    input.className = 'td-input';
+                    originalInputText = cellDom.textContent;
+                    input.value = cellDom.textContent;
+                    cellDom.textContent = '';
+                    cellDom.appendChild(input);
+                    input.focus();
+                    inputObj.isFocused = true;
+                    window.addEventListener('click', handleClickOutsideOfCell);
+                    window.addEventListener('keydown', handleKeyPress);
+                }      
+    
+                let isCellClickedAgain = false;
+    
+                function handleClickOutsideOfCell(e){   
+                    if (!input.contains(e.target)) {
+                        if (isCellClickedAgain) {
+                            closeEditing();
+                        }
+    
+                        isCellClickedAgain = true;
+                    }         
+                }
+    
+                function handleKeyPress(e) {
+                    if (e.key === 'Enter') {
+                        closeEditing();
+                    }
+                }
+    
+                function closeEditing() {
+                    let currDomIndex = findCurrentDomIndex(taskId);
+
+                    if (currDomIndex !== -1 && input.value !== originalInputText) {
+                        updateTask(taskProperty, currDomIndex, input.value);
+                    }
+
+                    cellDom.textContent = input.value;
+                    cellDom.className = '';
+                    input.remove();
+                    inputObj.isFocused = false;
+                    window.removeEventListener('keydown', handleKeyPress);
+                    window.removeEventListener('click', handleClickOutsideOfCell);
+                }
+            }
 
             cellDate.className = "td-date";
             cellDate.setAttribute('id', 'date-tasks' + i);
@@ -186,23 +242,26 @@ function changeTaskStatus(node, index, newStatus) {
     }    
 }
 
-function selectPriority(taskId) {
+// Return the current dom index after any of the order sorting functionalities is clicked.
+function findCurrentDomIndex(taskId) {
     const rowDoms = document.getElementsByClassName('row-task'); 
-    const tdPriorityNodes = document.getElementsByClassName('td-priority');
-    let index = -1;
 
     for (let i = 0; i < rowDoms.length; i++) {
         if (rowDoms[i].dataset.taskid === taskId) {
-            index = i;
-            break;
+            return i;
         } 
     }
+    return -1;
+}
 
-    if(index < 0) return;
+function selectPriority(taskId) {
+    const tdPriorityNodes = document.getElementsByClassName('td-priority');
+    let currDomIndex = findCurrentDomIndex(taskId);
+    if(currDomIndex < 0) return;
 
-    if (tdPriorityNodes[index].childNodes.length < 2) {
+    if (tdPriorityNodes[currDomIndex].childNodes.length < 2) {
         const priorities = ['low', 'medium', 'high'];
-        selectTaskProperty("priority", priorities, tdPriorityNodes, index, changeTaskPriority);
+        selectTaskProperty("priority", priorities, tdPriorityNodes, currDomIndex, changeTaskPriority);
     }
 }
 

@@ -79,6 +79,14 @@ router.put('/update/:id', function (req, res) {
 
 		if (result) {
 			let subdoc = result.tasks.id(req.body._id);
+			
+			if (req.body.task) {
+				subdoc.task = req.body.task;
+			} 
+
+			if (req.body.category) {
+				subdoc.category = req.body.category;
+			} 
 
 			if (req.body.date) {
 				subdoc.date = new Date(req.body.date);
