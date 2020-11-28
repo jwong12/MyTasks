@@ -51,12 +51,17 @@ function deleteTask(id) {
 }
 
 function requestTasksApi() {
+    $("#loader-bg").show();    
+    $("#loader-wrapper").show();    
     $("#loader").show();    
     
     $.getJSON("/api/tasks", function (data) {
         if(data) {
             tasks = data;
-            loadTasksDom();   
+            loadTasksDom();
+            handleClickOnDateTh();
+            $("#loader-bg").hide();     
+            $("#loader-wrapper").hide();    
             $("#loader").hide();       
         }
     });
@@ -323,7 +328,15 @@ function selectTaskProperty(taskProperty, taskPropertyOptions, taskPropertyNodes
     }
 }
 
-function resetSortOrders(property) {
+function resetSortOrders(property, arrowImgDom) {
+    const arrowImages = document.getElementsByClassName('img-arrow');
+ 
+    for (const dom of arrowImages) {
+        if (dom !== arrowImgDom) {
+            dom.className = 'img-arrow';
+        }
+    }
+
     for (let prop in sortOrder) {
         if (prop !== property) {
             sortOrder[prop] = '';
@@ -332,16 +345,20 @@ function resetSortOrders(property) {
 }
 
 function handleClickOnTh(property, sortFunc) {
+    const arrowImgDom = document.getElementById('arrow-' + property);
+    
     if (sortOrder[property] === '' || sortOrder[property] === 'desc') {
         sortOrder[property] = 'asc';
+        arrowImgDom.className = 'img-arrow img-arrow-asc';
         sortFunc(property, false);
 
     } else if (sortOrder[property] === 'asc') {
         sortOrder[property] = 'desc';
+        arrowImgDom.className = 'img-arrow img-arrow-desc';
         sortFunc(property, true);
     } 
 
-    resetSortOrders(property);
+    resetSortOrders(property, arrowImgDom);
 }
 
 function sortByAlphabet(property, isDescending) {
@@ -362,6 +379,7 @@ function sortByAlphabet(property, isDescending) {
 
 function handleClickOnDateTh() {    
     const rowDoms = document.getElementsByClassName('row-task');
+    const arrowImgDom = document.getElementById('arrow-date');
 
     for (let i = 0; i < tasks.length; i++) {
         tasks[i].dom = rowDoms[i];
@@ -378,25 +396,18 @@ function handleClickOnDateTh() {
 
     if (sortOrder.date === '' || sortOrder.date === 'desc') {
         sortOrder.date = 'asc';
+        arrowImgDom.className = 'img-arrow img-arrow-asc';
         tasks.sort((a, b) => compareDates(a.date, b.date));
         loadTasksDom();
 
     } else if (sortOrder.date === 'asc') {
         sortOrder.date = 'desc';
+        arrowImgDom.className = 'img-arrow img-arrow-desc';
         tasks.sort((a, b) => compareDates(b.date, a.date));
         loadTasksDom();
     } 
 
-    assignSortOrder();    
-    resetSortOrders('date');
-}
-
-function assignSortOrder() {
-    const rowDoms = document.getElementsByClassName('row-task');
-
-    for (let i = 0; i < rowDoms.length; i++) {
-        rowDoms[i].dataset.sortorder = i;
-    }
+    resetSortOrders('date', arrowImgDom);
 }
 
 function compareDates(a, b) {

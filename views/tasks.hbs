@@ -12,19 +12,29 @@
         <div class="col-md-6">
             <table class="table table-striped table-bordered table-hover table-condensed" id="tasks">
                 <tr>
-                    <th class="th-task" onclick="handleClickOnTh('task', sortByAlphabet)">Task</th>
-                    <th class="th-category" onclick="handleClickOnTh('category', sortByAlphabet)">Category</th>
-                    <th class="th-date" id="th-date" onclick="handleClickOnDateTh()">Date</th>
-                    <th class="th-status" onclick="handleClickOnTh('status', sortByStatus)">Status</th>
-                    <th class="th-priority" onclick="handleClickOnTh('priority', sortByPriority)">Priority</th>
+                    <th class="th-task" onclick="handleClickOnTh('task', sortByAlphabet)">Task<img 
+                        class='img-arrow' id='arrow-task' src='images/sort-arrow.svg' alt=''
+                    ></th>
+                    <th class="th-category" onclick="handleClickOnTh('category', sortByAlphabet)">Category<img 
+                        class='img-arrow' id='arrow-category' src='images/sort-arrow.svg' alt=''
+                    ></th>
+                    <th class="th-date" id="th-date" onclick="handleClickOnDateTh()">Date<img 
+                        class='img-arrow' id='arrow-date' src='images/sort-arrow.svg' alt=''
+                    ></th>
+                    <th class="th-status" onclick="handleClickOnTh('status', sortByStatus)">Status<img 
+                        class='img-arrow' id='arrow-status' src='images/sort-arrow.svg' alt=''
+                    ></th>
+                    <th class="th-priority" onclick="handleClickOnTh('priority', sortByPriority)">Priority<img 
+                        class='img-arrow' id='arrow-priority' src='images/sort-arrow.svg' alt=''
+                    ></th>
                     <th class="th-remove"></th>
                 </tr>
             </table>            
         </div>
     </div>
-    <div id="loader-wrapper">
-        <div id="loader"></div>
-    </div>
+</div>
+<div id="loader-wrapper">
+    <div id="loader"></div>
 </div>
 <script src="/javascripts/datepicker.min.js"></script>
 <script src="/javascripts/bundle-tasks.js"></script>
