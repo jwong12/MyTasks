@@ -3,8 +3,10 @@ const DOTW = ['Sun', 'Mon', 'Tues', 'Wed', 'Thu', 'Fri', 'Sat'];
 let tasks = [];
 
 const sortOrder = {
-    status: '',
+    task: '',
+    category: '',
     date: '',
+    status: '',
     priority: ''
 };
 
@@ -321,7 +323,44 @@ function selectTaskProperty(taskProperty, taskPropertyOptions, taskPropertyNodes
     }
 }
 
-function handleClickOnDate() {    
+function resetSortOrders(property) {
+    for (let prop in sortOrder) {
+        if (prop !== property) {
+            sortOrder[prop] = '';
+        }
+    }
+}
+
+function handleClickOnTh(property, sortFunc) {
+    if (sortOrder[property] === '' || sortOrder[property] === 'desc') {
+        sortOrder[property] = 'asc';
+        sortFunc(property, false);
+
+    } else if (sortOrder[property] === 'asc') {
+        sortOrder[property] = 'desc';
+        sortFunc(property, true);
+    } 
+
+    resetSortOrders(property);
+}
+
+function sortByAlphabet(property, isDescending) {
+    tasks.sort((a, b) => {
+        var x = a[property].toLowerCase();
+        var y = b[property].toLowerCase();
+        if (x < y) {return -1;}
+        if (x > y) {return 1;}
+        return 0;
+    });
+
+    if (isDescending === true) {
+        tasks.reverse();
+    }
+
+    loadTasksDom();
+}
+
+function handleClickOnDateTh() {    
     const rowDoms = document.getElementsByClassName('row-task');
 
     for (let i = 0; i < tasks.length; i++) {
@@ -349,8 +388,7 @@ function handleClickOnDate() {
     } 
 
     assignSortOrder();    
-    sortOrder.status = '';
-    sortOrder.priority = '';
+    resetSortOrders('date');
 }
 
 function assignSortOrder() {
@@ -367,29 +405,16 @@ function compareDates(a, b) {
     return 0;
 } 
 
-function handleClickOnStatus() {
-    if (sortOrder.status === '' || sortOrder.status === 'desc') {
-        sortOrder.status = 'asc';
-        sortByStatus('active');
-
-    } else if (sortOrder.status === 'asc') {
-        sortOrder.status = 'desc';
-        sortByStatus('done');
-    } 
-    
-    sortOrder.date = '';
-    sortOrder.priority = '';
-}
-
-function sortByStatus(sortOrder) {
+function sortByStatus() {
+    let order = (sortOrder.priority === 'asc' ? 'active' : 'done');
     let currIdx = 0;
 
-    while(currIdx < tasks.length && tasks[currIdx].status === sortOrder) {
+    while(currIdx < tasks.length && tasks[currIdx].status === order) {
         currIdx++;
     }
 
     for (let i = currIdx+1; i < tasks.length; i++) {
-        if (tasks[i].status === sortOrder) {
+        if (tasks[i].status === order) {
             const tmp = tasks[i];
             tasks[i] = tasks[currIdx];
             tasks[currIdx++] = tmp;
@@ -411,29 +436,16 @@ function sortByStatus(sortOrder) {
     loadTasksDom();
 }
 
-function handleClickOnPriority() {
-    if (sortOrder.priority === '' || sortOrder.priority === 'desc') {
-        sortOrder.priority = 'asc';
-        sortByPriority('low');
-
-    } else if (sortOrder.priority === 'asc') {
-        sortOrder.priority = 'desc';
-        sortByPriority('high');
-    } 
-    
-    sortOrder.date = '';
-    sortOrder.status = '';
-}
-
-function sortByPriority(sortOrder) {
+function sortByPriority() {
+    let order = (sortOrder.priority === 'asc' ? 'low' : 'high');
     let currIdx = 0;
 
-    while(currIdx < tasks.length && tasks[currIdx].priority === sortOrder) {
+    while(currIdx < tasks.length && tasks[currIdx].priority === order) {
         currIdx++;
     }
 
     for (let i = currIdx+1; i < tasks.length; i++) {
-        if (tasks[i].priority === sortOrder) {
+        if (tasks[i].priority === order) {
             const tmp = tasks[i];
             tasks[i] = tasks[currIdx];
             tasks[currIdx++] = tmp;

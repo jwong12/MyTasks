@@ -275,6 +275,7 @@ input[type=range]::-ms-thumb {
 #btn-wrapper {
 	text-align: center;
 	width: 450px;
+	margin-top: 10px;
 }
 
 #btn-wrapper button {
@@ -347,6 +348,7 @@ input[type=range]::-ms-thumb {
 	font-weight: 600;
 	letter-spacing: 1px;
 	padding: 4px 5px;
+	cursor: pointer;
 }
 
 #tasks tr td {
@@ -358,7 +360,7 @@ input[type=range]::-ms-thumb {
 	cursor: pointer;
 }
 
-#tasks tr td:last-child {
+#tasks tr td:last-of-type {
 	cursor: default;
 }
 
@@ -390,10 +392,6 @@ input[type=range]::-ms-thumb {
 	min-width: auto;
 }
 
-.th-date, .th-status, .th-priority {
-	cursor: pointer;
-}
-
 .table-condensed>tbody>tr>td {
 	padding: 1px;
 	background-color: #fcfeff;
@@ -414,13 +412,14 @@ input[type=range]::-ms-thumb {
 	text-align: center;
 }
 
-.td-status {
+.table-condensed>tbody>tr>td.td-status {
+	padding: 0 1px;
 	white-space: nowrap;
 	color: #5f5f5f;
 }
 
-.status, .priority {
-	padding: 4px 5px;
+.table-condensed>tbody>tr>td>.status, .table-condensed>tbody>tr>td>.priority {
+	padding: 6px 5px;
 	font-weight: 600;
     cursor: pointer;
 }
@@ -498,7 +497,7 @@ input[type=range]::-ms-thumb {
 
 @media only screen and (max-width: 767px) {
 	h1 {
-		margin: 40px 0 20px;
+		margin: 50px 0 20px;
 	}
 
 	.content-wrapper {
@@ -566,6 +565,10 @@ input[type=range]::-ms-thumb {
 	.th-category, .th-status, .th-priority {
 		min-width: auto;
 	}
+
+	.table-condensed>tbody>tr>td>.status, .table-condensed>tbody>tr>td>.priority {
+		padding: 10px 5px;
+	}
 	
 	.col-md-6 {
 		margin-top: 5px;
@@ -596,8 +599,8 @@ input[type=range]::-ms-thumb {
 		min-width: 75px;	
 	}
 
-	.status, .priority {
-		padding: 4px;
+	.table-condensed>tbody>tr>td>.status, .table-condensed>tbody>tr>td>.priority {
+		padding: 7px 4px;
 	}
 
 	.deleteBtn {
@@ -637,13 +640,13 @@ input[type=range]::-ms-thumb {
 		padding: 2px;
 	}
 
-	#priority-wrapper {
-		margin: 25px 0;
+	.table-condensed>tbody>tr>td>.status, .table-condensed>tbody>tr>td>.priority {
+		padding: 9px 3px;
+		white-space: initial;
 	}
 
-	.status, .priority {
-		padding: 4px 3px;
-		white-space: initial;
+	#priority-wrapper {
+		margin: 25px 0;
 	}
 }
 
