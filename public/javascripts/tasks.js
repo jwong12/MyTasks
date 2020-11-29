@@ -186,7 +186,7 @@ function loadTasksDom() {
 
             const buttonDelete = document.createElement('button');
             buttonDelete.innerText = 'delete';
-            buttonDelete.className = 'deleteBtn btn btn-primary';
+            buttonDelete.className = 'deleteBtn btn';
             buttonDelete.addEventListener('click', () => deleteTask(taskId));
             cellDelete.className = 'td-delete';
             cellDelete.appendChild(buttonDelete);

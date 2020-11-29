@@ -344,6 +344,7 @@ input[type=range]::-ms-thumb {
 	font-weight: 600;
 	padding: 4px 5px;
 	cursor: pointer;
+	user-select: none;
 }
 
 #tasks tr td {
@@ -445,13 +446,21 @@ input[type=range]::-ms-thumb {
 	min-width: 880px;
 }
 
-.deleteBtn {
+.table-condensed>tbody>tr>td>.deleteBtn {
 	font-size: 12px;
 	padding: 4px 9px;
-	outline: none;
+	outline: none !important;
 	color: #f9f9f9;
+	background-color: #337ab7;
 	border-color: #337ab7;
 	border-radius: 12px;
+	font-weight: 600;
+}
+
+.table-condensed>tbody>tr>td>.deleteBtn:hover {
+	background-color: #286090;
+	border-color: #204d74;
+	color: #f9f9f9;
 }
 
 .ul-selection {
