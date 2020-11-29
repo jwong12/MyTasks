@@ -27,25 +27,25 @@ router.post('/register', function(req, res, next) {
         console.log('user registered!');
         
         const demoTaskOne = {
-            task: "Implement Counting sort algo (Demo #1)",
-            category: "Personal Project",
-            date: "Tue Nov 17 2020",
+            task: "Do laundry (Demo #1)",
+            category: "Chore",
+            date: "Fri Nov 20 2020",
             status: "done",
-            priority: "high",
+            priority: "low",
         };
 
         const demoTaskTwo = {
-            task: "Finish Task Manager project (Demo #2)",
-            category: "Personal Project",
+            task: "Do project research (Demo #2)",
+            category: "Work",
             date: "Mon Nov 23 2020",
             status: "in progress",
             priority: "high",
         };
 
         const demoTaskThree = {
-            task: "Apply for dev jobs (Demo #3)",
-            category: "Work",
-            date: "Wed Nov 18 2020",
+            task: "Make design prototypes (Demo #3)",
+            category: "Project",
+            date: "Thu Nov 26 2020",
             status: "in progress",
             priority: "medium",
         };
@@ -55,15 +55,15 @@ router.post('/register', function(req, res, next) {
             category: "Chore",
             date: "Sat Nov 28 2020",
             status: "active",
-            priority: "medium",
+            priority: "low",
         };
 
         const demoTaskFive = {
-            task: "Hiking day @ Grouse 11am (Demo #5)",
-            category: "Personal",
+            task: "Read 'The Productivity Project' book (Demo #5)",
+            category: "Personal Development",
             date: "Sun Nov 29 2020",
             status: "active",
-            priority: "low",
+            priority: "medium",
         };
 
         const newTasks = new Tasks({ username: req.body.username, tasks: [demoTaskOne, demoTaskTwo, demoTaskThree, demoTaskFour, demoTaskFive] });

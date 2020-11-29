@@ -168,6 +168,8 @@ h4 {
     border-bottom: solid #a5a5a5 1px;
 	padding: 5px 10px;
 	width: 300px;
+	font-size: 16px;
+    font-weight: 600;
 }
 
 .col-sm-10 {
@@ -196,7 +198,7 @@ h4 {
 	line-height: 10px;
 	font-size: 16px;
 	vertical-align: middle;
-	font-weight: 500;
+	font-weight: 600;
 	cursor: pointer;
 }
 
@@ -218,9 +220,9 @@ h4 {
 	display: inline-block;
 	width: 10px;
 	line-height: 0;
-	font-size: 18px;
+	font-size: 16px;
+	font-weight: 600;
 	padding-left: 15px;
-	vertical-align: sub;
 }
 
 input[type=range] {
@@ -230,8 +232,7 @@ input[type=range] {
 	-webkit-appearance: none;
 	height: 5px;
 	background: #efefef;
-	border-radius: 10px;
-	box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.4);
+	border-radius: 6px;
 	outline: none;
 	cursor: pointer;
 }
@@ -243,10 +244,8 @@ input[type=range]::-webkit-slider-thumb {
 	height: 25px;
 	background: #337ab7;
 	border: solid 1px #2e6da4;
-	border-radius: 20px;
+	border-radius: 6px;
 	cursor: pointer;
-	-webkit-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.4);
-	box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.4);
 }
 
 input[type=range]::-moz-range-thumb {
@@ -255,10 +254,8 @@ input[type=range]::-moz-range-thumb {
 	height: 25px;
 	background: #337ab7;
 	border: solid 1px #2e6da4;
-	border-radius: 20px;
+	border-radius: 6px;
 	cursor: pointer;
-	-moz-box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.4);
-	box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.4);
 }
 
 input[type=range]::-ms-thumb {
@@ -267,9 +264,8 @@ input[type=range]::-ms-thumb {
 	height: 25px;
 	background: #337ab7;
 	border: solid 1px #2e6da4;
-	border-radius: 20px;
+	border-radius: 6px;
 	cursor: pointer;
-	box-shadow: 1px 1px 2px 0px rgba(0,0,0,0.4);
 }
 
 #btn-wrapper {

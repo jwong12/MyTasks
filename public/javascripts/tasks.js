@@ -417,7 +417,7 @@ function compareDates(a, b) {
 } 
 
 function sortByStatus() {
-    let order = (sortOrder.priority === 'asc' ? 'active' : 'done');
+    let order = (sortOrder.status === 'asc' ? 'active' : 'done');
     let currIdx = 0;
 
     while(currIdx < tasks.length && tasks[currIdx].status === order) {
