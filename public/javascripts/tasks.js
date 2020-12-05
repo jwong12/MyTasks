@@ -304,6 +304,19 @@ function selectTaskProperty(taskProperty, taskPropertyOptions, taskPropertyNodes
                     break;
                 default:
             }
+
+            let propertySorted;
+            
+            for (const prop in sortOrder) {
+                if (sortOrder[prop] === 'asc' || sortOrder[prop] === 'desc') {
+                    if (prop === 'priority') {
+                        sortByPriority();
+
+                    } else {
+                        sortByStatus();
+                    }
+                }
+            }
         });
         ul.appendChild(li);
     }
