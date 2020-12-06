@@ -147,6 +147,13 @@ function loadTasksDom() {
 
                     if (currDomIndex !== -1 && input.value !== originalInputText) {
                         updateTask(taskProperty, currDomIndex, input.value);
+
+                        if (sortOrder.task === 'asc' || sortOrder.category === 'asc') {
+                            sortByAlphabet(taskProperty, false);
+
+                        } else if (sortOrder.task === 'desc' || sortOrder.category === 'desc') {
+                            sortByAlphabet(taskProperty, true);
+                        }
                     }
 
                     cellDom.textContent = input.value;
