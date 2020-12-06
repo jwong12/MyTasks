@@ -317,8 +317,6 @@ function selectTaskProperty(taskProperty, taskPropertyOptions, taskPropertyNodes
                     break;
                 default:
             }
-
-            let propertySorted;
             
             for (const prop in sortOrder) {
                 if (sortOrder[prop] === 'asc' || sortOrder[prop] === 'desc') {
@@ -331,6 +329,7 @@ function selectTaskProperty(taskProperty, taskPropertyOptions, taskPropertyNodes
                 }
             }
         });
+        
         ul.appendChild(li);
     }
 
