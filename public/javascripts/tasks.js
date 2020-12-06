@@ -148,11 +148,17 @@ function loadTasksDom() {
                     if (currDomIndex !== -1 && input.value !== originalInputText) {
                         updateTask(taskProperty, currDomIndex, input.value);
 
-                        if (sortOrder.task === 'asc' || sortOrder.category === 'asc') {
-                            sortByAlphabet(taskProperty, false);
+                        if (sortOrder.task === 'asc') {
+                            sortByAlphabet('task', false);
 
-                        } else if (sortOrder.task === 'desc' || sortOrder.category === 'desc') {
-                            sortByAlphabet(taskProperty, true);
+                        } else if (sortOrder.task === 'desc') {
+                            sortByAlphabet('task', true);
+
+                        } else if (sortOrder.category === 'asc') {
+                            sortByAlphabet('category', false);
+
+                        } else if (sortOrder.category === 'desc') {
+                            sortByAlphabet('category', true);
                         }
                     }
 
